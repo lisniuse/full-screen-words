@@ -1,0 +1,19 @@
+{
+  "forms": {
+    "base": {
+      "value": "maybe",
+      "examples": [
+        {
+          "en": "Maybe we can go to the park today.",
+          "zh": "也许我们今天可以去公园。"
+        },
+        {
+          "en": "I might be late; maybe the traffic is bad.",
+          "zh": "我可能会迟到；也许交通状况不好。"
+        }
+      ]
+    },
+    "past": null,
+    "pastParticiple": null
+  }
+}

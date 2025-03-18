@@ -10,9 +10,14 @@
       <div class="modal-content">
         <div class="modal-header">
           <h3>{{ word }}</h3>
-          <button @click="isPracticeMode = !isPracticeMode" class="practice-btn">
-            {{ isPracticeMode ? '退出练习' : '开始练习' }}
-          </button>
+          <div class="header-buttons">
+            <button @click="toggleTheme" class="theme-btn">
+              {{ isDarkMode ? '☀️' : '🌙' }}
+            </button>
+            <button @click="isPracticeMode = !isPracticeMode" class="practice-btn">
+              {{ isPracticeMode ? '退出练习' : '开始练习' }}
+            </button>
+          </div>
         </div>
         <div class="info" v-if="info">
           <div class="word-forms">
@@ -48,7 +53,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 
 const props = defineProps({
   show: Boolean,
@@ -88,8 +93,22 @@ const getFormTitle = (type) => {
   }
   return titles[type] || type
 }
-</script>
 
+const isDarkMode = ref(false)
+
+const toggleTheme = () => {
+  isDarkMode.value = !isDarkMode.value
+  document.documentElement.setAttribute('data-theme', isDarkMode.value ? 'dark' : 'light')
+}
+
+onMounted(() => {
+  // 检查系统主题偏好
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    isDarkMode.value = true
+    document.documentElement.setAttribute('data-theme', 'dark')
+  }
+})
+</script>
 <style scoped>
 .word-modal {
   position: fixed;
@@ -121,8 +140,8 @@ const getFormTitle = (type) => {
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background-color: #fff;
-  color: #666;
+  background-color: var(--bg-color);
+  color: var(--text-color);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -140,14 +159,14 @@ const getFormTitle = (type) => {
 }
 
 .close-btn:hover {
-  background-color: #f5f5f5;
-  color: #333;
+  background-color: var(--hover-bg);
+  color: var(--text-color);
   transform: scale(1.1);
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
 .modal-content {
-  background-color: white;
+  background-color: var(--bg-color);
   padding: 0 30px;
   border-radius: 16px;
   width: 100%;
@@ -159,20 +178,40 @@ const getFormTitle = (type) => {
 .modal-header {
   position: sticky;
   top: 0;
-  background-color: white;
+  background-color: var(--bg-color);
   margin: -30px -30px 20px;
   padding: 20px 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid var(--border-color);
   z-index: 1;
+}
+
+.header-buttons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.theme-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  padding: 8px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.theme-btn:hover {
+  background-color: var(--hover-bg);
 }
 
 .modal-header h3 {
   margin: 0;
   font-size: 24px;
-  color: #333;
+  color: var(--text-color);
   flex: 1;
 }
 
@@ -196,13 +235,13 @@ const getFormTitle = (type) => {
   margin-bottom: 24px;
   padding: 20px;
   border-radius: 12px;
-  background-color: #f8f9fa;
-  border: 1px solid #eee;
+  background-color: var(--hover-bg);
+  border: 1px solid var(--border-color);
 }
 
 .form-value {
   font-size: 18px;
-  color: #333;
+  color: var(--text-color);
   margin: 12px 0;
   font-weight: 500;
 }
@@ -222,19 +261,20 @@ h4 {
   margin-bottom: 16px;
   padding: 16px;
   border-radius: 8px;
-  background-color: white;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  background-color: var(--bg-color);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
 
 .en {
-  color: #2c3e50;
+  color: var(--text-color);
   margin-bottom: 8px;
   font-size: 15px;
   line-height: 1.5;
 }
 
 .zh {
-  color: #666;
+  color: var(--text-color);
+  opacity: 0.8;
   font-size: 14px;
   line-height: 1.5;
 }
@@ -242,18 +282,20 @@ h4 {
 .loading {
   text-align: center;
   padding: 30px;
-  color: #666;
+  color: var(--text-color);
   font-size: 16px;
 }
 
 .practice-input {
   width: 100%;
   padding: 8px 12px;
-  border: 2px solid #ddd;
+  border: 2px solid var(--border-color);
   border-radius: 4px;
   margin-bottom: 8px;
   font-size: 15px;
   transition: all 0.3s;
+  background-color: var(--bg-color);
+  color: var(--text-color);
 }
 
 .practice-input.correct {
@@ -271,16 +313,17 @@ h4 {
 }
 
 .modal-content::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: var(--hover-bg);
   border-radius: 4px;
 }
 
 .modal-content::-webkit-scrollbar-thumb {
-  background: #ccc;
+  background: var(--border-color);
   border-radius: 4px;
 }
 
 .modal-content::-webkit-scrollbar-thumb:hover {
-  background: #999;
+  background: var(--text-color);
+  opacity: 0.5;
 }
 </style>

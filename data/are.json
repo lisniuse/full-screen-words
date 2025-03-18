@@ -1,0 +1,43 @@
+{
+  "forms": {
+    "base": {
+      "value": "are",
+      "examples": [
+        {
+          "en": "They are students.",
+          "zh": "他们都是学生。"
+        },
+        {
+          "en": "We are happy.",
+          "zh": "我们很快乐。"
+        }
+      ]
+    },
+    "past": {
+      "value": "were",
+      "examples": [
+        {
+          "en": "They were students.",
+          "zh": "他们曾经是学生。"
+        },
+        {
+          "en": "We were happy yesterday.",
+          "zh": "我们昨天很快乐。"
+        }
+      ]
+    },
+    "pastParticiple": {
+      "value": "been",
+      "examples": [
+        {
+          "en": "They have been students for five years.",
+          "zh": "他们当了五年的学生。"
+        },
+        {
+          "en": "We have been happy all day.",
+          "zh": "我们一整天都很开心。"
+        }
+      ]
+    }
+  }
+}

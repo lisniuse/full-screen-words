@@ -1,0 +1,43 @@
+{
+  "forms": {
+    "base": {
+      "value": "step",
+      "examples": [
+        {
+          "en": "She steps into the room.",
+          "zh": "她走进房间。"
+        },
+        {
+          "en": "He steps on a stone.",
+          "zh": "他踩到一块石头。"
+        }
+      ]
+    },
+    "past": {
+      "value": "stepped",
+      "examples": [
+        {
+          "en": "She stepped into the room.",
+          "zh": "她走进了房间。"
+        },
+        {
+          "en": "He stepped on a stone.",
+          "zh": "他踩到了一块石头。"
+        }
+      ]
+    },
+    "pastParticiple": {
+      "value": "stepped",
+      "examples": [
+        {
+          "en": "She has stepped into the room.",
+          "zh": "她已经走进了房间。"
+        },
+        {
+          "en": "He had stepped on a stone.",
+          "zh": "他踩到了一块石头。"
+        }
+      ]
+    }
+  }
+}

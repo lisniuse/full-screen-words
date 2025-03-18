@@ -1,0 +1,43 @@
+{
+  "forms": {
+    "base": {
+      "value": "muscle",
+      "examples": [
+        {
+          "en": "The biceps are the muscles in the front of the upper arm.",
+          "zh": "二头肌是上臂前面的肌肉。"
+        },
+        {
+          "en": "I went to the gym to work out my muscles.",
+          "zh": "我去健身房锻炼肌肉。"
+        }
+      ]
+    },
+    "past": {
+      "value": "muscled",
+      "examples": [
+        {
+          "en": "She muscled her way through the crowd.",
+          "zh": "她挤过人群。"
+        },
+        {
+          "en": "He muscled the weight up.",
+          "zh": "他把重量举了起来。"
+        }
+      ]
+    },
+    "pastParticiple": {
+      "value": "muscled",
+      "examples": [
+        {
+          "en": "The athlete had muscled his way to victory.",
+          "zh": "运动员通过努力赢得了胜利。"
+        },
+        {
+          "en": "After muscled training, he felt stronger.",
+          "zh": "经过锻炼后，他感觉更强壮了。"
+        }
+      ]
+    }
+  }
+}

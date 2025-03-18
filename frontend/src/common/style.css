@@ -39,3 +39,24 @@ img {
   max-width: 100%;
   height: auto;
 }
+
+
+/* 暗黑模式的基础样式 */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #333333;
+  --border-color: #eeeeee;
+  --hover-bg: #e8e8e8;
+}
+
+[data-theme="dark"] {
+  --bg-color: #1a1a1a;
+  --text-color: #ffffff;
+  --border-color: #333333;
+  --hover-bg: #2c2c2c;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}

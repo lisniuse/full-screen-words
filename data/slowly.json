@@ -1,0 +1,19 @@
+{
+  "forms": {
+    "base": {
+      "value": "slowly",
+      "examples": [
+        {
+          "en": "She walked slowly down the street.",
+          "zh": "她慢慢地走在街上。"
+        },
+        {
+          "en": "He spoke slowly to make sure everyone understood.",
+          "zh": "他慢慢地讲，以确保每个人都明白。"
+        }
+      ]
+    },
+    "past": null,
+    "pastParticiple": null
+  }
+}

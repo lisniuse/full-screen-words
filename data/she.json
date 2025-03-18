@@ -1,0 +1,19 @@
+{
+  "forms": {
+    "base": {
+      "value": "she",
+      "examples": [
+        {
+          "en": "She is a teacher.",
+          "zh": "她是一名教师。"
+        },
+        {
+          "en": "She lives in New York.",
+          "zh": "她住在纽约。"
+        }
+      ]
+    },
+    "past": null,
+    "pastParticiple": null
+  }
+}

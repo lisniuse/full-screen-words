@@ -1,0 +1,43 @@
+{
+  "forms": {
+    "base": {
+      "value": "explain",
+      "examples": [
+        {
+          "en": "Please explain the process to me.",
+          "zh": "请向我解释这个过程。"
+        },
+        {
+          "en": "I need to explain this clearly.",
+          "zh": "我需要把这个解释清楚。"
+        }
+      ]
+    },
+    "past": {
+      "value": "explained",
+      "examples": [
+        {
+          "en": "She explained the rules to the new students.",
+          "zh": "她向新生解释了规则。"
+        },
+        {
+          "en": "He explained how to solve the problem.",
+          "zh": "他解释了如何解决问题。"
+        }
+      ]
+    },
+    "pastParticiple": {
+      "value": "explained",
+      "examples": [
+        {
+          "en": "The teacher had explained the assignment.",
+          "zh": "老师已经解释了作业。"
+        },
+        {
+          "en": "We have explained the situation to everyone.",
+          "zh": "我们已经向大家解释了情况。"
+        }
+      ]
+    }
+  }
+}

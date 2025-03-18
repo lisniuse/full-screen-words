@@ -1,0 +1,43 @@
+{
+  "forms": {
+    "base": {
+      "value": "book",
+      "examples": [
+        {
+          "en": "I bought a new book yesterday.",
+          "zh": "我昨天买了一本新书。"
+        },
+        {
+          "en": "The library has a wide selection of books.",
+          "zh": "图书馆有各种各样的书。"
+        }
+      ]
+    },
+    "past": {
+      "value": "booked",
+      "examples": [
+        {
+          "en": "She booked a flight to Paris last week.",
+          "zh": "她上周订了一班去巴黎的飞机。"
+        },
+        {
+          "en": "They booked the hotel in advance to get a discount.",
+          "zh": "他们提前预订了酒店以获得折扣。"
+        }
+      ]
+    },
+    "pastParticiple": {
+      "value": "booked",
+      "examples": [
+        {
+          "en": "The tickets were booked weeks in advance.",
+          "zh": "票几个星期前就订好了。"
+        },
+        {
+          "en": "He has booked the tickets for the concert.",
+          "zh": "他已经订了音乐会的票。"
+        }
+      ]
+    }
+  }
+}

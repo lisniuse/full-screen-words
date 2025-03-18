@@ -1,0 +1,19 @@
+{
+  "forms": {
+    "base": {
+      "value": "carbon",
+      "examples": [
+        {
+          "en": "Carbon is the sixth element on the periodic table.",
+          "zh": "碳是元素周期表上的第六个元素。"
+        },
+        {
+          "en": "The carbon in this pencil is of high quality.",
+          "zh": "这支铅笔里的碳质量很高。"
+        }
+      ]
+    },
+    "past": null,
+    "pastParticiple": null
+  }
+}
