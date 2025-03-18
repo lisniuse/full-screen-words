@@ -1,0 +1,43 @@
+{
+  "forms": {
+    "base": {
+      "value": "shop",
+      "examples": [
+        {
+          "en": "I like to shop on weekends.",
+          "zh": "我喜欢在周末购物。"
+        },
+        {
+          "en": "She often shops at this store.",
+          "zh": "她经常在这家店购物。"
+        }
+      ]
+    },
+    "past": {
+      "value": "shopped",
+      "examples": [
+        {
+          "en": "I shopped at the mall yesterday.",
+          "zh": "我昨天在商场购物了。"
+        },
+        {
+          "en": "We shopped for groceries last night.",
+          "zh": "我们昨晚买了杂货。"
+        }
+      ]
+    },
+    "pastParticiple": {
+      "value": "shopped",
+      "examples": [
+        {
+          "en": "I have shopped at this store many times.",
+          "zh": "我在这间店购物过很多次。"
+        },
+        {
+          "en": "He has never shopped online before.",
+          "zh": "他以前从未在网上购物过。"
+        }
+      ]
+    }
+  }
+}

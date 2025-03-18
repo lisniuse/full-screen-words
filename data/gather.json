@@ -1,0 +1,43 @@
+{
+  "forms": {
+    "base": {
+      "value": "gather",
+      "examples": [
+        {
+          "en": "Let's gather the information before making a decision.",
+          "zh": "让我们在做决定之前收集信息。"
+        },
+        {
+          "en": "We need to gather the materials for the project.",
+          "zh": "我们需要为项目收集材料。"
+        }
+      ]
+    },
+    "past": {
+      "value": "gathered",
+      "examples": [
+        {
+          "en": "Yesterday, they gathered all the necessary data for the report.",
+          "zh": "昨天，他们收集了报告所需的所有数据。"
+        },
+        {
+          "en": "We gathered around the fire last night.",
+          "zh": "昨晚我们围坐在火堆旁。"
+        }
+      ]
+    },
+    "pastParticiple": {
+      "value": "gathered",
+      "examples": [
+        {
+          "en": "The information has been gathered from various sources.",
+          "zh": "这些信息是从各种来源收集的。"
+        },
+        {
+          "en": "He has gathered a lot of experience over the years.",
+          "zh": "多年来，他积累了大量经验。"
+        }
+      ]
+    }
+  }
+}

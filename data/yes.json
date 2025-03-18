@@ -1,0 +1,19 @@
+{
+  "forms": {
+    "base": {
+      "value": "yes",
+      "examples": [
+        {
+          "en": "She answered yes to the question.",
+          "zh": "她回答问题时同意了。"
+        },
+        {
+          "en": "He said yes to the invitation.",
+          "zh": "他接受了邀请。"
+        }
+      ]
+    },
+    "past": null,
+    "pastParticiple": null
+  }
+}

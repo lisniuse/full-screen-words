@@ -1,0 +1,43 @@
+{
+  "forms": {
+    "base": {
+      "value": "differ",
+      "examples": [
+        {
+          "en": "The opinions of the two experts differ on this issue.",
+          "zh": "两位专家在这个问题上的意见有所不同。"
+        },
+        {
+          "en": "I differ with you on this point.",
+          "zh": "在这个问题上，我与你意见相左。"
+        }
+      ]
+    },
+    "past": {
+      "value": "differed",
+      "examples": [
+        {
+          "en": "They differed in their approach to solving the problem last week.",
+          "zh": "上周，他们在解决问题的方法上有所不同。"
+        },
+        {
+          "en": "She differed from her colleagues in opinion during the meeting.",
+          "zh": "在会议上，她与同事们意见不同。"
+        }
+      ]
+    },
+    "pastParticiple": {
+      "value": "differed",
+      "examples": [
+        {
+          "en": "The two versions have differed in their descriptions of the event.",
+          "zh": "这两个版本在描述该事件时有所不同。"
+        },
+        {
+          "en": "He has differed from his parents in many aspects since childhood.",
+          "zh": "从童年起，他在许多方面都与父母不同。"
+        }
+      ]
+    }
+  }
+}

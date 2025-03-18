@@ -1,0 +1,43 @@
+{
+  "forms": {
+    "base": {
+      "value": "pour",
+      "examples": [
+        {
+          "en": "She poured water into the glass.",
+          "zh": "她把水倒进玻璃杯里。"
+        },
+        {
+          "en": "He poured coffee into the cup.",
+          "zh": "他把咖啡倒进杯子里。"
+        }
+      ]
+    },
+    "past": {
+      "value": "poured",
+      "examples": [
+        {
+          "en": "They poured milk over the pancakes.",
+          "zh": "他们把牛奶倒在煎饼上。"
+        },
+        {
+          "en": "We poured wine into the goblets.",
+          "zh": "我们把葡萄酒倒进高脚杯里。"
+        }
+      ]
+    },
+    "pastParticiple": {
+      "value": "poured",
+      "examples": [
+        {
+          "en": "The milk had been poured over the pancakes.",
+          "zh": "牛奶已经被倒在煎饼上了。"
+        },
+        {
+          "en": "The wine had been poured into the goblets.",
+          "zh": "葡萄酒已经被倒进高脚杯里了。"
+        }
+      ]
+    }
+  }
+}

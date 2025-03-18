@@ -1,0 +1,19 @@
+{
+  "forms": {
+    "base": {
+      "value": "constantly",
+      "examples": [
+        {
+          "en": "He constantly checks his phone.",
+          "zh": "他不断地检查他的手机。"
+        },
+        {
+          "en": "She works constantly to improve her skills.",
+          "zh": "她不断地努力提高她的技能。"
+        }
+      ]
+    },
+    "past": null,
+    "pastParticiple": null
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "forms": {
+    "base": {
+      "value": "captain",
+      "examples": [
+        {
+          "en": "The captain of the ship gave orders to the crew.",
+          "zh": "船长向船员下达了命令。"
+        },
+        {
+          "en": "The team captain led them to victory.",
+          "zh": "球队队长带领他们赢得了胜利。"
+        }
+      ]
+    },
+    "past": null,
+    "pastParticiple": null
+  }
+}

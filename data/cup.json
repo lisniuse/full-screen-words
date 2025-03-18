@@ -1,0 +1,19 @@
+{
+  "forms": {
+    "base": {
+      "value": "cup",
+      "examples": [
+        {
+          "en": "She drank tea from a cup.",
+          "zh": "她从杯子里喝茶。"
+        },
+        {
+          "en": "The waiter brought a cup of coffee.",
+          "zh": "服务员端来了一杯咖啡。"
+        }
+      ]
+    },
+    "past": null,
+    "pastParticiple": null
+  }
+}

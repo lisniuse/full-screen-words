@@ -1,0 +1,19 @@
+{
+  "forms": {
+    "base": {
+      "value": "giant",
+      "examples": [
+        {
+          "en": "The giant tower dominates the skyline.",
+          "zh": "那座巨大的塔楼主宰着天际线。"
+        },
+        {
+          "en": "The giant panda is a symbol of China.",
+          "zh": "大熊猫是中国的象征。"
+        }
+      ]
+    },
+    "past": null,
+    "pastParticiple": null
+  }
+}

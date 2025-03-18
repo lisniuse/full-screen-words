@@ -1,0 +1,19 @@
+{
+  "forms": {
+    "base": {
+      "value": "when",
+      "examples": [
+        {
+          "en": "When will the meeting start?",
+          "zh": "会议什么时候开始？"
+        },
+        {
+          "en": "I wonder when we will meet again.",
+          "zh": "我想知道我们什么时候会再见面。"
+        }
+      ]
+    },
+    "past": null,
+    "pastParticiple": null
+  }
+}

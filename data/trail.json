@@ -1,0 +1,43 @@
+{
+  "forms": {
+    "base": {
+      "value": "trail",
+      "examples": [
+        {
+          "en": "I will trail behind you.",
+          "zh": "我会跟在你后面。"
+        },
+        {
+          "en": "The dog trails its tail behind.",
+          "zh": "狗拖着尾巴在后面。"
+        }
+      ]
+    },
+    "past": {
+      "value": "trailed",
+      "examples": [
+        {
+          "en": "Yesterday, I trailed behind the group.",
+          "zh": "昨天，我跟在团队后面。"
+        },
+        {
+          "en": "The hiker trailed through the forest yesterday.",
+          "zh": "昨天，徒步旅行者穿过森林时拖着脚步。"
+        }
+      ]
+    },
+    "pastParticiple": {
+      "value": "trailed",
+      "examples": [
+        {
+          "en": "She has trailed behind the group all day.",
+          "zh": "她一整天都跟在团队后面。"
+        },
+        {
+          "en": "The hiker has trailed through the forest all morning.",
+          "zh": "徒步旅行者一早就在森林里拖着脚步。"
+        }
+      ]
+    }
+  }
+}

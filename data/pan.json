@@ -1,0 +1,43 @@
+{
+  "forms": {
+    "base": {
+      "value": "pan",
+      "examples": [
+        {
+          "en": "The cook used a pan to fry the eggs.",
+          "zh": "厨师用平底锅煎鸡蛋。"
+        },
+        {
+          "en": "The camera panned across the landscape.",
+          "zh": "摄像机镜头扫过风景。"
+        }
+      ]
+    },
+    "past": {
+      "value": "panned",
+      "examples": [
+        {
+          "en": "She panned the scene for the movie.",
+          "zh": "她为电影拍摄了那个场景。"
+        },
+        {
+          "en": "They panned the gold in the river.",
+          "zh": "他们在河里淘金。"
+        }
+      ]
+    },
+    "pastParticiple": {
+      "value": "panned",
+      "examples": [
+        {
+          "en": "The movie was panned by critics.",
+          "zh": "这部电影被评论家们批评了。"
+        },
+        {
+          "en": "The gold was panned from the river.",
+          "zh": "金子是从河里淘出来的。"
+        }
+      ]
+    }
+  }
+}

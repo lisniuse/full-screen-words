@@ -1,0 +1,22 @@
+{
+  "selectedExtensions": [
+    ".html",
+    ".js",
+    ".vue"
+  ],
+  "ignoreList": [
+    "*.jpg",
+    "*.jpeg",
+    "*.png",
+    "*.gif",
+    "*.bmp",
+    "*.ico",
+    "*.svg",
+    "*.webp",
+    "package-lock.json",
+    ".codebundle",
+    "code_bundle.txt"
+  ],
+  "useGitignore": true,
+  "outputPath": "D:\\dev\\github\\full-screen-words\\code_bundle.txt"
+}

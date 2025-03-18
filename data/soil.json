@@ -1,0 +1,43 @@
+{
+  "forms": {
+    "base": {
+      "value": "soil",
+      "examples": [
+        {
+          "en": "The soil in this region is very fertile.",
+          "zh": "这个地区的土壤非常肥沃。"
+        },
+        {
+          "en": "We need to test the soil before planting the crops.",
+          "zh": "我们在种植作物之前需要测试土壤。"
+        }
+      ]
+    },
+    "past": {
+      "value": "soiled",
+      "examples": [
+        {
+          "en": "She soiled her dress while playing in the garden.",
+          "zh": "她玩的时候把裙子弄脏了。"
+        },
+        {
+          "en": "The children soiled the carpet with mud.",
+          "zh": "孩子们用泥土弄脏了地毯。"
+        }
+      ]
+    },
+    "pastParticiple": {
+      "value": "soiled",
+      "examples": [
+        {
+          "en": "The clothes were soiled by the mud during the hike.",
+          "zh": "在远足中，衣服被泥土弄脏了。"
+        },
+        {
+          "en": "The car seats are soiled with food and drinks.",
+          "zh": "汽车座位上沾满了食物和饮料。"
+        }
+      ]
+    }
+  }
+}

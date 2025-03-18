@@ -1,0 +1,19 @@
+{
+  "forms": {
+    "base": {
+      "value": "lady",
+      "examples": [
+        {
+          "en": "The lady is wearing a beautiful dress.",
+          "zh": "那位女士穿着一件漂亮的连衣裙。"
+        },
+        {
+          "en": "The lady at the counter is very helpful.",
+          "zh": "在柜台的那位女士非常乐于助人。"
+        }
+      ]
+    },
+    "past": null,
+    "pastParticiple": null
+  }
+}

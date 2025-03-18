@@ -1,0 +1,19 @@
+{
+  "forms": {
+    "base": {
+      "value": "fierce",
+      "examples": [
+        {
+          "en": "The fierce competition between the two teams was intense.",
+          "zh": "两队之间的激烈竞争非常激烈。"
+        },
+        {
+          "en": "She has a fierce determination to succeed.",
+          "zh": "她有强烈的成功决心。"
+        }
+      ]
+    },
+    "past": null,
+    "pastParticiple": null
+  }
+}

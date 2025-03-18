@@ -1,0 +1,43 @@
+{
+  "forms": {
+    "base": {
+      "value": "enter",
+      "examples": [
+        {
+          "en": "She entered the room quietly.",
+          "zh": "她安静地走进了房间。"
+        },
+        {
+          "en": "He entered the data into the computer.",
+          "zh": "他将数据输入了计算机。"
+        }
+      ]
+    },
+    "past": {
+      "value": "entered",
+      "examples": [
+        {
+          "en": "They entered the competition last year.",
+          "zh": "他们去年参加了比赛。"
+        },
+        {
+          "en": "We entered the building through the back door.",
+          "zh": "我们从后门进入了大楼。"
+        }
+      ]
+    },
+    "pastParticiple": {
+      "value": "entered",
+      "examples": [
+        {
+          "en": "The door was entered by the thief.",
+          "zh": "门被小偷闯入了。"
+        },
+        {
+          "en": "The information has been entered into the system.",
+          "zh": "信息已经被输入到系统中。"
+        }
+      ]
+    }
+  }
+}

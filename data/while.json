@@ -1,0 +1,43 @@
+{
+  "forms": {
+    "base": {
+      "value": "while",
+      "examples": [
+        {
+          "en": "While I was studying, my brother was watching TV.",
+          "zh": "当我学习的时候，我弟弟在看电视。"
+        },
+        {
+          "en": "While she sleeps, I will prepare dinner.",
+          "zh": "当她在睡觉时，我会准备晚饭。"
+        }
+      ]
+    },
+    "past": {
+      "value": "whiled",
+      "examples": [
+        {
+          "en": "She whiled away the time by reading a book.",
+          "zh": "她通过读书打发时间。"
+        },
+        {
+          "en": "They whiled away the evening with music and conversation.",
+          "zh": "他们用音乐和谈话度过了一个晚上。"
+        }
+      ]
+    },
+    "pastParticiple": {
+      "value": "whiled",
+      "examples": [
+        {
+          "en": "The children had whiled away the entire day at the park.",
+          "zh": "孩子们一整天都在公园里度过。"
+        },
+        {
+          "en": "We had whiled away the hours waiting for the bus.",
+          "zh": "我们等公共汽车等了好几个小时。"
+        }
+      ]
+    }
+  }
+}

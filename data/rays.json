@@ -1,0 +1,25 @@
+{
+  "forms": {
+    "base": {
+      "value": "ray",
+      "examples": [
+        {
+          "en": "The sun emits rays of light.",
+          "zh": "太阳发出光线。"
+        },
+        {
+          "en": "The x-rays are used in medical examinations.",
+          "zh": "X射线用于医学检查。"
+        }
+      ]
+    },
+    "past": {
+      "value": null,
+      "examples": []
+    },
+    "pastParticiple": {
+      "value": null,
+      "examples": []
+    }
+  }
+}

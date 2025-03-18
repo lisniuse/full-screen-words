@@ -1,0 +1,43 @@
+{
+  "forms": {
+    "base": {
+      "value": "further",
+      "examples": [
+        {
+          "en": "She wants to further her education.",
+          "zh": "她想进一步发展她的教育。"
+        },
+        {
+          "en": "We need to discuss this matter further.",
+          "zh": "我们需要进一步讨论这个问题。"
+        }
+      ]
+    },
+    "past": {
+      "value": "furthered",
+      "examples": [
+        {
+          "en": "He furthered his career by working hard.",
+          "zh": "他通过努力工作进一步发展了他的事业。"
+        },
+        {
+          "en": "The company furthered its goals through innovation.",
+          "zh": "公司通过创新进一步实现了其目标。"
+        }
+      ]
+    },
+    "pastParticiple": {
+      "value": "furthered",
+      "examples": [
+        {
+          "en": "The project has been furthered by the team's efforts.",
+          "zh": "这个项目已经被团队的努力进一步推动了。"
+        },
+        {
+          "en": "They have furthered their research by collaborating with international experts.",
+          "zh": "他们通过与国际专家合作，进一步推进了他们的研究。"
+        }
+      ]
+    }
+  }
+}

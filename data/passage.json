@@ -1,0 +1,19 @@
+{
+  "forms": {
+    "base": {
+      "value": "passage",
+      "examples": [
+        {
+          "en": "The passage of time is inevitable.",
+          "zh": "时间的流逝是不可避免的。"
+        },
+        {
+          "en": "The old house has a narrow passage leading to the garden.",
+          "zh": "这栋老房子有一条狭窄的通道通向花园。"
+        }
+      ]
+    },
+    "past": null,
+    "pastParticiple": null
+  }
+}

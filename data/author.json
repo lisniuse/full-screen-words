@@ -1,0 +1,19 @@
+{
+  "forms": {
+    "base": {
+      "value": "author",
+      "examples": [
+        {
+          "en": "The author of this book is very famous.",
+          "zh": "这本书的作者非常有名。"
+        },
+        {
+          "en": "She is the author of several best-selling novels.",
+          "zh": "她是几本畅销小说的作者。"
+        }
+      ]
+    },
+    "past": null,
+    "pastParticiple": null
+  }
+}

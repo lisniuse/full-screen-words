@@ -1,0 +1,19 @@
+{
+  "forms": {
+    "base": {
+      "value": "seldom",
+      "examples": [
+        {
+          "en": "I seldom watch TV in the evening.",
+          "zh": "我晚上很少看电视。"
+        },
+        {
+          "en": "She seldom goes to the gym.",
+          "zh": "她很少去健身房。"
+        }
+      ]
+    },
+    "past": null,
+    "pastParticiple": null
+  }
+}

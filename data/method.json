@@ -1,0 +1,19 @@
+{
+  "forms": {
+    "base": {
+      "value": "method",
+      "examples": [
+        {
+          "en": "The method he used was very effective.",
+          "zh": "他使用的方法非常有效。"
+        },
+        {
+          "en": "There are several methods to solve this problem.",
+          "zh": "解决这个问题有几种方法。"
+        }
+      ]
+    },
+    "past": null,
+    "pastParticiple": null
+  }
+}

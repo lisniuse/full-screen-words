@@ -1,0 +1,43 @@
+{
+  "forms": {
+    "base": {
+      "value": "title",
+      "examples": [
+        {
+          "en": "The title of the book is 'The Great Gatsby'.",
+          "zh": "这本书的标题是《了不起的盖茨比》。"
+        },
+        {
+          "en": "She titled her new novel 'Midnight Sun'.",
+          "zh": "她给她的新小说命名为《午夜阳光》。"
+        }
+      ]
+    },
+    "past": {
+      "value": "titled",
+      "examples": [
+        {
+          "en": "He titled the painting 'Starry Night'.",
+          "zh": "他给这幅画命名为《星夜》。"
+        },
+        {
+          "en": "They titled the project 'New Horizons'.",
+          "zh": "他们给这个项目命名为《新视野》。"
+        }
+      ]
+    },
+    "pastParticiple": {
+      "value": "titled",
+      "examples": [
+        {
+          "en": "The book was titled 'The Catcher in the Rye'.",
+          "zh": "这本书被命名为《麦田里的守望者》。"
+        },
+        {
+          "en": "She has titled all her songs with poetic names.",
+          "zh": "她所有的歌曲都有诗意的名字，已经被命名为。"
+        }
+      ]
+    }
+  }
+}

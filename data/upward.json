@@ -1,0 +1,19 @@
+{
+  "forms": {
+    "base": {
+      "value": "upward",
+      "examples": [
+        {
+          "en": "Look upward and see the stars.",
+          "zh": "抬头望天，看见星星。"
+        },
+        {
+          "en": "Sales are moving upward.",
+          "zh": "销售正在上升。"
+        }
+      ]
+    },
+    "past": null,
+    "pastParticiple": null
+  }
+}

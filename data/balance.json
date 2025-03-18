@@ -1,0 +1,43 @@
+{
+  "forms": {
+    "base": {
+      "value": "balance",
+      "examples": [
+        {
+          "en": "The balance of nature is important.",
+          "zh": "自然界的平衡很重要。"
+        },
+        {
+          "en": "She checked her bank balance.",
+          "zh": "她查看了她的银行余额。"
+        }
+      ]
+    },
+    "past": {
+      "value": "balanced",
+      "examples": [
+        {
+          "en": "She balanced the tray on one hand.",
+          "zh": "她用一只手托着托盘。"
+        },
+        {
+          "en": "He balanced the budget last year.",
+          "zh": "他去年平衡了预算。"
+        }
+      ]
+    },
+    "pastParticiple": {
+      "value": "balanced",
+      "examples": [
+        {
+          "en": "The scales were balanced perfectly.",
+          "zh": "天平被完美地平衡了。"
+        },
+        {
+          "en": "They have balanced their accounts.",
+          "zh": "他们已经平衡了他们的账户。"
+        }
+      ]
+    }
+  }
+}

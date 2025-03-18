@@ -1,0 +1,43 @@
+{
+  "forms": {
+    "base": {
+      "value": "plant",
+      "examples": [
+        {
+          "en": "She plants flowers in her garden.",
+          "zh": "她在花园里种花。"
+        },
+        {
+          "en": "He plants trees every spring.",
+          "zh": "他每年春天都种树。"
+        }
+      ]
+    },
+    "past": {
+      "value": "planted",
+      "examples": [
+        {
+          "en": "The farmer planted rice last week.",
+          "zh": "那个农民上周种了水稻。"
+        },
+        {
+          "en": "We planted vegetables in our backyard.",
+          "zh": "我们在后院种了蔬菜。"
+        }
+      ]
+    },
+    "pastParticiple": {
+      "value": "planted",
+      "examples": [
+        {
+          "en": "The teacher has planted the idea of sustainability in her students.",
+          "zh": "老师已经在学生心中种下了可持续发展的理念。"
+        },
+        {
+          "en": "The company has planted sensors throughout the building.",
+          "zh": "该公司在整栋大楼里安装了传感器。"
+        }
+      ]
+    }
+  }
+}

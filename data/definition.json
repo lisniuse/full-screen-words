@@ -1,0 +1,19 @@
+{
+  "forms": {
+    "base": {
+      "value": "definition",
+      "examples": [
+        {
+          "en": "The definition of success varies from person to person.",
+          "zh": "成功的定义因人而异。"
+        },
+        {
+          "en": "Understanding the definition of a word is essential for learning a language.",
+          "zh": "理解一个单词的定义是学习语言的基础。"
+        }
+      ]
+    },
+    "past": null,
+    "pastParticiple": null
+  }
+}

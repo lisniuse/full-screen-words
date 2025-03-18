@@ -1,0 +1,43 @@
+{
+  "forms": {
+    "base": {
+      "value": "allow",
+      "examples": [
+        {
+          "en": "Please allow me to introduce myself.",
+          "zh": "请允许我自我介绍一下。"
+        },
+        {
+          "en": "We are allowed to use the library.",
+          "zh": "我们被允许使用图书馆。"
+        }
+      ]
+    },
+    "past": {
+      "value": "allowed",
+      "examples": [
+        {
+          "en": "He allowed her to go.",
+          "zh": "他允许她去。"
+        },
+        {
+          "en": "They allowed us to stay.",
+          "zh": "他们允许我们留下来。"
+        }
+      ]
+    },
+    "pastParticiple": {
+      "value": "allowed",
+      "examples": [
+        {
+          "en": "The project has been allowed to proceed.",
+          "zh": "这个项目已经被允许继续进行。"
+        },
+        {
+          "en": "She has been allowed to work from home.",
+          "zh": "她已经被允许在家工作。"
+        }
+      ]
+    }
+  }
+}

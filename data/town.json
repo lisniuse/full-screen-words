@@ -1,0 +1,19 @@
+{
+  "forms": {
+    "base": {
+      "value": "town",
+      "examples": [
+        {
+          "en": "I live in a small town.",
+          "zh": "我住在一个小镇里。"
+        },
+        {
+          "en": "The town is known for its beautiful parks.",
+          "zh": "这个镇以其美丽的公园而闻名。"
+        }
+      ]
+    },
+    "past": null,
+    "pastParticiple": null
+  }
+}

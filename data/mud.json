@@ -1,0 +1,19 @@
+{
+  "forms": {
+    "base": {
+      "value": "mud",
+      "examples": [
+        {
+          "en": "The children played in the mud.",
+          "zh": "孩子们在泥地里玩耍。"
+        },
+        {
+          "en": "The farmer plowed the muddy field.",
+          "zh": "农民耕种了泥泞的田地。"
+        }
+      ]
+    },
+    "past": null,
+    "pastParticiple": null
+  }
+}

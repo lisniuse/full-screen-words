@@ -1,0 +1,19 @@
+{
+  "forms": {
+    "base": {
+      "value": "late",
+      "examples": [
+        {
+          "en": "She is late for the meeting.",
+          "zh": "她开会迟到了。"
+        },
+        {
+          "en": "He arrived late.",
+          "zh": "他来得很晚。"
+        }
+      ]
+    },
+    "past": null,
+    "pastParticiple": null
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "forms": {
+    "base": {
+      "value": "refer",
+      "examples": [
+        {
+          "en": "He referred to the issue in the meeting.",
+          "zh": "他在会议上提到了这个问题。"
+        },
+        {
+          "en": "She referred the matter to the authorities.",
+          "zh": "她将此事转交给了当局。"
+        }
+      ]
+    },
+    "past": {
+      "value": "referred",
+      "examples": [
+        {
+          "en": "They referred to the problem yesterday.",
+          "zh": "他们昨天提到了这个问题。"
+        },
+        {
+          "en": "I referred the case to the legal department last week.",
+          "zh": "我上周将这个案件转交给了法律部门。"
+        }
+      ]
+    },
+    "pastParticiple": {
+      "value": "referred",
+      "examples": [
+        {
+          "en": "The issue has been referred to the experts.",
+          "zh": "这个问题已经被转交给专家了。"
+        },
+        {
+          "en": "She has referred the matter to the higher authorities.",
+          "zh": "她已经将此事转交给了上级部门。"
+        }
+      ]
+    }
+  }
+}

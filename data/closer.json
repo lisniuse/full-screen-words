@@ -1,0 +1,43 @@
+{
+  "forms": {
+    "base": {
+      "value": "close",
+      "examples": [
+        {
+          "en": "Please close the door.",
+          "zh": "请关门。"
+        },
+        {
+          "en": "I need to close the window.",
+          "zh": "我需要关窗户。"
+        }
+      ]
+    },
+    "past": {
+      "value": "closed",
+      "examples": [
+        {
+          "en": "The store closed last week.",
+          "zh": "那家商店上周关门了。"
+        },
+        {
+          "en": "The bank closed early today.",
+          "zh": "银行今天提前关门了。"
+        }
+      ]
+    },
+    "pastParticiple": {
+      "value": "closed",
+      "examples": [
+        {
+          "en": "The teacher has closed the door.",
+          "zh": "老师已经关门了。"
+        },
+        {
+          "en": "We have closed the store for the day.",
+          "zh": "我们已经关门了，今天不营业了。"
+        }
+      ]
+    }
+  }
+}

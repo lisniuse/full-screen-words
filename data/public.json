@@ -1,0 +1,19 @@
+{
+  "forms": {
+    "base": {
+      "value": "public",
+      "examples": [
+        {
+          "en": "The public meeting was very informative.",
+          "zh": "这次公开会议非常有信息量。"
+        },
+        {
+          "en": "We need to make this information public.",
+          "zh": "我们需要将这些信息公之于众。"
+        }
+      ]
+    },
+    "past": null,
+    "pastParticiple": null
+  }
+}

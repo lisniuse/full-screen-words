@@ -1,0 +1,43 @@
+{
+  "forms": {
+    "base": {
+      "value": "feed",
+      "examples": [
+        {
+          "en": "Please feed the dog.",
+          "zh": "请喂狗。"
+        },
+        {
+          "en": "We feed the chickens every morning.",
+          "zh": "我们每天早上喂鸡。"
+        }
+      ]
+    },
+    "past": {
+      "value": "fed",
+      "examples": [
+        {
+          "en": "Yesterday, I fed the birds.",
+          "zh": "昨天，我喂了鸟。"
+        },
+        {
+          "en": "She fed her baby last night.",
+          "zh": "她昨晚喂了她的孩子。"
+        }
+      ]
+    },
+    "pastParticiple": {
+      "value": "fed",
+      "examples": [
+        {
+          "en": "The dog has been fed.",
+          "zh": "狗已经被喂过了。"
+        },
+        {
+          "en": "The chickens have been fed.",
+          "zh": "鸡已经被喂过了。"
+        }
+      ]
+    }
+  }
+}

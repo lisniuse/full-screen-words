@@ -1,0 +1,19 @@
+{
+  "forms": {
+    "base": {
+      "value": "company",
+      "examples": [
+        {
+          "en": "The company is planning to expand its operations.",
+          "zh": "该公司计划扩展其业务。"
+        },
+        {
+          "en": "She works at a tech company in Silicon Valley.",
+          "zh": "她在硅谷的一家科技公司工作。"
+        }
+      ]
+    },
+    "past": null,
+    "pastParticiple": null
+  }
+}

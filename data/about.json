@@ -1,0 +1,19 @@
+{
+  "forms": {
+    "base": {
+      "value": "about",
+      "examples": [
+        {
+          "en": "This book is about history.",
+          "zh": "这本书是关于历史的。"
+        },
+        {
+          "en": "I'm about thirty minutes away.",
+          "zh": "我大概要过三十分钟才能到。"
+        }
+      ]
+    },
+    "past": null,
+    "pastParticiple": null
+  }
+}

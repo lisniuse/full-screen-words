@@ -1,0 +1,19 @@
+{
+  "forms": {
+    "base": {
+      "value": "better",
+      "examples": [
+        {
+          "en": "The weather today is better than yesterday.",
+          "zh": "今天的天气比昨天好。"
+        },
+        {
+          "en": "Better late than never.",
+          "zh": "迟做总比不做好。"
+        }
+      ]
+    },
+    "past": null,
+    "pastParticiple": null
+  }
+}

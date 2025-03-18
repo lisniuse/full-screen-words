@@ -1,0 +1,43 @@
+{
+  "forms": {
+    "base": {
+      "value": "map",
+      "examples": [
+        {
+          "en": "She looked at the map to find the way.",
+          "zh": "她看着地图找路。"
+        },
+        {
+          "en": "The scientists mapped the area for the new park.",
+          "zh": "科学家们为新公园绘制了该区域的地图。"
+        }
+      ]
+    },
+    "past": {
+      "value": "mapped",
+      "examples": [
+        {
+          "en": "He mapped the terrain before the expedition.",
+          "zh": "他在探险前绘制了地形图。"
+        },
+        {
+          "en": "They mapped out their travel plans last night.",
+          "zh": "他们昨晚计划了旅行计划。"
+        }
+      ]
+    },
+    "pastParticiple": {
+      "value": "mapped",
+      "examples": [
+        {
+          "en": "The terrain had been mapped before the expedition.",
+          "zh": "地形在探险前已经被绘制了。"
+        },
+        {
+          "en": "Their travel plans had been mapped out by last night.",
+          "zh": "他们的旅行计划在昨晚已经被计划好了。"
+        }
+      ]
+    }
+  }
+}

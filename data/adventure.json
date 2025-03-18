@@ -1,0 +1,19 @@
+{
+  "forms": {
+    "base": {
+      "value": "adventure",
+      "examples": [
+        {
+          "en": "This is an adventure of a lifetime.",
+          "zh": "这是一次一生一次的冒险。"
+        },
+        {
+          "en": "The adventure began when we decided to travel around the world.",
+          "zh": "冒险从我们决定环游世界时开始。"
+        }
+      ]
+    },
+    "past": null,
+    "pastParticiple": null
+  }
+}

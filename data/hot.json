@@ -1,0 +1,19 @@
+{
+  "forms": {
+    "base": {
+      "value": "hot",
+      "examples": [
+        {
+          "en": "It's hot outside today.",
+          "zh": "今天外面很热。"
+        },
+        {
+          "en": "The coffee is still hot.",
+          "zh": "咖啡还很热。"
+        }
+      ]
+    },
+    "past": null,
+    "pastParticiple": null
+  }
+}

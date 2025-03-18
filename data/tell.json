@@ -1,0 +1,43 @@
+{
+  "forms": {
+    "base": {
+      "value": "tell",
+      "examples": [
+        {
+          "en": "Can you tell me the time?",
+          "zh": "你能告诉我现在几点吗？"
+        },
+        {
+          "en": "Tell me a story.",
+          "zh": "给我讲个故事吧。"
+        }
+      ]
+    },
+    "past": {
+      "value": "told",
+      "examples": [
+        {
+          "en": "I told her the truth.",
+          "zh": "我告诉她真相了。"
+        },
+        {
+          "en": "He told us a funny joke.",
+          "zh": "他给我们讲了一个有趣的笑话。"
+        }
+      ]
+    },
+    "pastParticiple": {
+      "value": "told",
+      "examples": [
+        {
+          "en": "She has told me about her trip.",
+          "zh": "她已经告诉我关于她的旅行了。"
+        },
+        {
+          "en": "We had told them the news before they arrived.",
+          "zh": "他们在到达之前，我们已经告诉了他们这个消息。"
+        }
+      ]
+    }
+  }
+}

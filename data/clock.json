@@ -1,0 +1,19 @@
+{
+  "forms": {
+    "base": {
+      "value": "clock",
+      "examples": [
+        {
+          "en": "The clock on the wall is broken.",
+          "zh": "挂在墙上的钟坏了。"
+        },
+        {
+          "en": "She set the alarm on her clock.",
+          "zh": "她设置了闹钟。"
+        }
+      ]
+    },
+    "past": null,
+    "pastParticiple": null
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "forms": {
+    "base": {
+      "value": "upper",
+      "examples": [
+        {
+          "en": "The upper part of the mountain is covered with snow.",
+          "zh": "山的上半部分覆盖着雪。"
+        },
+        {
+          "en": "The upper class controls the majority of the wealth.",
+          "zh": "上层阶级掌握着大部分财富。"
+        }
+      ]
+    },
+    "past": {
+      "value": null,
+      "examples": null
+    },
+    "pastParticiple": {
+      "value": null,
+      "examples": null
+    }
+  }
+}

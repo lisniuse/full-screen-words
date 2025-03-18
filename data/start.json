@@ -1,0 +1,43 @@
+{
+  "forms": {
+    "base": {
+      "value": "start",
+      "examples": [
+        {
+          "en": "I start my day with coffee.",
+          "zh": "我每天早晨用咖啡开始。"
+        },
+        {
+          "en": "He starts the car.",
+          "zh": "他发动了汽车。"
+        }
+      ]
+    },
+    "past": {
+      "value": "started",
+      "examples": [
+        {
+          "en": "She started her new job yesterday.",
+          "zh": "她昨天开始她的新工作。"
+        },
+        {
+          "en": "We started the meeting at nine o'clock.",
+          "zh": "我们九点钟开始开会。"
+        }
+      ]
+    },
+    "pastParticiple": {
+      "value": "started",
+      "examples": [
+        {
+          "en": "They have started the project.",
+          "zh": "他们已经开始了这个项目。"
+        },
+        {
+          "en": "He has never started a business before.",
+          "zh": "他以前从未做过生意。"
+        }
+      ]
+    }
+  }
+}

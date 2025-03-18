@@ -1,0 +1,19 @@
+{
+  "forms": {
+    "base": {
+      "value": "old",
+      "examples": [
+        {
+          "en": "The older man walked into the room.",
+          "zh": "年长的那位男士走进了房间。"
+        },
+        {
+          "en": "She is older than her sister.",
+          "zh": "她比她的姐姐年长。"
+        }
+      ]
+    },
+    "past": null,
+    "pastParticiple": null
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "forms": {
+    "base": {
+      "value": "apple",
+      "examples": [
+        {
+          "en": "I ate an apple for breakfast.",
+          "zh": "我早餐吃了一个苹果。"
+        },
+        {
+          "en": "She bought a red apple at the market.",
+          "zh": "她在市场上买了一个红苹果。"
+        }
+      ]
+    },
+    "past": null,
+    "pastParticiple": null
+  }
+}

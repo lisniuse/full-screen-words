@@ -1,0 +1,43 @@
+{
+  "forms": {
+    "base": {
+      "value": "bank",
+      "examples": [
+        {
+          "en": "I went to the bank to deposit money.",
+          "zh": "我去银行存款。"
+        },
+        {
+          "en": "The river has high banks.",
+          "zh": "这条河有高高的河岸。"
+        }
+      ]
+    },
+    "past": {
+      "value": "banked",
+      "examples": [
+        {
+          "en": "The plane banked sharply to avoid the storm.",
+          "zh": "飞机为了避开风暴而急剧倾斜。"
+        },
+        {
+          "en": "She banked her salary every month.",
+          "zh": "她每个月都把薪水存入银行。"
+        }
+      ]
+    },
+    "pastParticiple": {
+      "value": "banked",
+      "examples": [
+        {
+          "en": "The money has been banked for future use.",
+          "zh": "这些钱已经存入银行以备将来使用。"
+        },
+        {
+          "en": "He banked the boat on the riverbank.",
+          "zh": "他把船停在了河岸边。"
+        }
+      ]
+    }
+  }
+}

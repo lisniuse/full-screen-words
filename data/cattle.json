@@ -1,0 +1,19 @@
+{
+  "forms": {
+    "base": {
+      "value": "cattle",
+      "examples": [
+        {
+          "en": "The farmer tends to his cattle every morning.",
+          "zh": "农夫每天早上照料他的牛。"
+        },
+        {
+          "en": "The cattle are grazing in the field.",
+          "zh": "牛正在田里吃草。"
+        }
+      ]
+    },
+    "past": null,
+    "pastParticiple": null
+  }
+}

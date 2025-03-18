@@ -1,0 +1,43 @@
+{
+  "forms": {
+    "base": {
+      "value": "lay",
+      "examples": [
+        {
+          "en": "She lay the book on the table.",
+          "zh": "她把书放在桌子上。"
+        },
+        {
+          "en": "He lay down on the bed.",
+          "zh": "他躺在床上。"
+        }
+      ]
+    },
+    "past": {
+      "value": "laid",
+      "examples": [
+        {
+          "en": "She laid the book on the table yesterday.",
+          "zh": "她昨天把书放在桌子上。"
+        },
+        {
+          "en": "He laid down on the bed last night.",
+          "zh": "他昨晚躺在床上。"
+        }
+      ]
+    },
+    "pastParticiple": {
+      "value": "laid",
+      "examples": [
+        {
+          "en": "She has laid the book on the table.",
+          "zh": "她已经把书放在桌子上。"
+        },
+        {
+          "en": "He has laid down on the bed.",
+          "zh": "他已经躺在床上。"
+        }
+      ]
+    }
+  }
+}

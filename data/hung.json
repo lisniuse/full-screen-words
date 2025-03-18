@@ -1,0 +1,43 @@
+{
+  "forms": {
+    "base": {
+      "value": "hang",
+      "examples": [
+        {
+          "en": "She hung the painting on the wall.",
+          "zh": "她把画挂在了墙上。"
+        },
+        {
+          "en": "They hung the hats on the rack.",
+          "zh": "他们把帽子挂在了架子上。"
+        }
+      ]
+    },
+    "past": {
+      "value": "hung",
+      "examples": [
+        {
+          "en": "He hung the artwork yesterday.",
+          "zh": "他昨天挂上了那幅艺术品。"
+        },
+        {
+          "en": "We hung the coats on the hook.",
+          "zh": "我们把外套挂在了钩子上。"
+        }
+      ]
+    },
+    "pastParticiple": {
+      "value": "hung",
+      "examples": [
+        {
+          "en": "The painting has been hung in the gallery.",
+          "zh": "这幅画已经被挂在了画廊里。"
+        },
+        {
+          "en": "The shirts have been hung out to dry.",
+          "zh": "衬衫已经被挂出去晾干了。"
+        }
+      ]
+    }
+  }
+}

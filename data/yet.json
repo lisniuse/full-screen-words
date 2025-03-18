@@ -1,0 +1,19 @@
+{
+  "forms": {
+    "base": {
+      "value": "yet",
+      "examples": [
+        {
+          "en": "I haven't finished yet.",
+          "zh": "我还没有完成。"
+        },
+        {
+          "en": "Yet another problem arose.",
+          "zh": "又出现了一个问题。"
+        }
+      ]
+    },
+    "past": null,
+    "pastParticiple": null
+  }
+}

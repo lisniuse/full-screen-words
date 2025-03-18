@@ -1,0 +1,43 @@
+{
+  "forms": {
+    "base": {
+      "value": "rush",
+      "examples": [
+        {
+          "en": "She rushes to finish her work before the deadline.",
+          "zh": "她匆忙地赶在截止日期前完成工作。"
+        },
+        {
+          "en": "The children rushed out to play in the park.",
+          "zh": "孩子们冲出去去公园玩。"
+        }
+      ]
+    },
+    "past": {
+      "value": "rushed",
+      "examples": [
+        {
+          "en": "They rushed to the airport to catch their flight.",
+          "zh": "他们赶往机场去赶上他们的航班。"
+        },
+        {
+          "en": "He rushed through the door when he heard the news.",
+          "zh": "他听到消息后冲出了门。"
+        }
+      ]
+    },
+    "pastParticiple": {
+      "value": "rushed",
+      "examples": [
+        {
+          "en": "The project was rushed to completion in a week.",
+          "zh": "这个项目在一周内匆忙完成。"
+        },
+        {
+          "en": "She was rushed to the hospital after the accident.",
+          "zh": "事故发生后她被匆忙送到了医院。"
+        }
+      ]
+    }
+  }
+}

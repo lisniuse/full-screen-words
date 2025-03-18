@@ -1,0 +1,19 @@
+{
+  "forms": {
+    "base": {
+      "value": "however",
+      "examples": [
+        {
+          "en": "However, she decided to leave the company.",
+          "zh": "然而，她决定离开公司。"
+        },
+        {
+          "en": "I wanted to go out, however, the weather was too bad.",
+          "zh": "我本想去外面，然而天气太糟糕了。"
+        }
+      ]
+    },
+    "past": null,
+    "pastParticiple": null
+  }
+}

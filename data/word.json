@@ -1,0 +1,19 @@
+{
+  "forms": {
+    "base": {
+      "value": "word",
+      "examples": [
+        {
+          "en": "The word 'happy' has five letters.",
+          "zh": "单词‘快乐’有五个字母。"
+        },
+        {
+          "en": "She spoke her mind in a few short words.",
+          "zh": "她用简短的几句话说出了自己的想法。"
+        }
+      ]
+    },
+    "past": null,
+    "pastParticiple": null
+  }
+}
