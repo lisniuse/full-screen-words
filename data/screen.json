@@ -1,0 +1,43 @@
+{
+  "forms": {
+    "base": {
+      "value": "screen",
+      "examples": [
+        {
+          "en": "They are screening the applicants.",
+          "zh": "他们正在筛查应聘者。"
+        },
+        {
+          "en": "We need to screen these data.",
+          "zh": "我们需要筛查这些数据。"
+        }
+      ]
+    },
+    "past": {
+      "value": "screened",
+      "examples": [
+        {
+          "en": "They screened the applicants yesterday.",
+          "zh": "他们昨天筛查了应聘者。"
+        },
+        {
+          "en": "We have screened these data before.",
+          "zh": "我们已经筛查过这些数据。"
+        }
+      ]
+    },
+    "pastParticiple": {
+      "value": "screened",
+      "examples": [
+        {
+          "en": "The data has been screened.",
+          "zh": "这些数据已经被筛查过了。"
+        },
+        {
+          "en": "The applicants have been screened.",
+          "zh": "应聘者已经被筛查过了。"
+        }
+      ]
+    }
+  }
+}

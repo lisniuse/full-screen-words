@@ -1,0 +1,43 @@
+{
+  "forms": {
+    "base": {
+      "value": "speed",
+      "examples": [
+        {
+          "en": "The car was moving at a high speed.",
+          "zh": "那辆车以很高的速度行驶。"
+        },
+        {
+          "en": "The speed of light is approximately 300,000 km/s.",
+          "zh": "光速大约是每秒30万公里。"
+        }
+      ]
+    },
+    "past": {
+      "value": "sped",
+      "examples": [
+        {
+          "en": "She sped away from the scene.",
+          "zh": "她迅速离开现场。"
+        },
+        {
+          "en": "The car sped down the highway.",
+          "zh": "汽车在高速公路上疾驰。"
+        }
+      ]
+    },
+    "pastParticiple": {
+      "value": "sped",
+      "examples": [
+        {
+          "en": "They had sped to the finish line.",
+          "zh": "他们已经迅速到达终点线。"
+        },
+        {
+          "en": "The train had sped through the tunnel.",
+          "zh": "火车已经快速穿过隧道。"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "forms": {
+    "base": {
+      "value": "climb",
+      "examples": [
+        {
+          "en": "I want to climb Mount Everest one day.",
+          "zh": "我有一天想攀登珠穆朗玛峰。"
+        },
+        {
+          "en": "The children climbed the tree to get the ball.",
+          "zh": "孩子们爬树去拿球。"
+        }
+      ]
+    },
+    "past": {
+      "value": "climbed",
+      "examples": [
+        {
+          "en": "She climbed the stairs quickly.",
+          "zh": "她快速地爬上了楼梯。"
+        },
+        {
+          "en": "We climbed the mountain yesterday.",
+          "zh": "我们昨天爬了山。"
+        }
+      ]
+    },
+    "pastParticiple": {
+      "value": "climbed",
+      "examples": [
+        {
+          "en": "He has climbed many mountains in his life.",
+          "zh": "他一生中爬过很多山。"
+        },
+        {
+          "en": "The climbers had already climbed the peak before sunrise.",
+          "zh": "登山者已经在日出之前登上了山顶。"
+        }
+      ]
+    }
+  }
+}

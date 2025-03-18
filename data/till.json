@@ -1,0 +1,43 @@
+{
+  "forms": {
+    "base": {
+      "value": "till",
+      "examples": [
+        {
+          "en": "They tilled the soil to prepare for planting.",
+          "zh": "他们耕种土地以准备播种。"
+        },
+        {
+          "en": "The farmer tills his fields every spring.",
+          "zh": "农民每年春天都会耕种他的田地。"
+        }
+      ]
+    },
+    "past": {
+      "value": "tilled",
+      "examples": [
+        {
+          "en": "They tilled the soil last year.",
+          "zh": "他们去年耕种了土地。"
+        },
+        {
+          "en": "The farmer tilled his fields yesterday.",
+          "zh": "农民昨天耕种了他的田地。"
+        }
+      ]
+    },
+    "pastParticiple": {
+      "value": "tilled",
+      "examples": [
+        {
+          "en": "The fields have been tilled and are ready for crops.",
+          "zh": "田地已经被耕种好了，准备播种。"
+        },
+        {
+          "en": "The farmer has tilled his land many times.",
+          "zh": "农民已经多次耕种过他的土地。"
+        }
+      ]
+    }
+  }
+}

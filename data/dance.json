@@ -1,0 +1,43 @@
+{
+  "forms": {
+    "base": {
+      "value": "dance",
+      "examples": [
+        {
+          "en": "She enjoys dancing in the park.",
+          "zh": "她喜欢在公园里跳舞。"
+        },
+        {
+          "en": "The children dance every morning.",
+          "zh": "孩子们每天早上跳舞。"
+        }
+      ]
+    },
+    "past": {
+      "value": "danced",
+      "examples": [
+        {
+          "en": "They danced at the party last night.",
+          "zh": "他们昨晚在派对上跳舞了。"
+        },
+        {
+          "en": "He danced with her at the wedding.",
+          "zh": "他在婚礼上和她跳舞了。"
+        }
+      ]
+    },
+    "pastParticiple": {
+      "value": "danced",
+      "examples": [
+        {
+          "en": "They have danced together many times.",
+          "zh": "他们已经一起跳过很多次舞了。"
+        },
+        {
+          "en": "She has never danced in public before.",
+          "zh": "她以前从未在公共场合跳舞过。"
+        }
+      ]
+    }
+  }
+}

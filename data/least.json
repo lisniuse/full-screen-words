@@ -1,0 +1,19 @@
+{
+  "forms": {
+    "base": {
+      "value": "least",
+      "examples": [
+        {
+          "en": "She is the least talkative person in the room.",
+          "zh": "她是房间里最不健谈的人。"
+        },
+        {
+          "en": "He tried to do the least amount of work possible.",
+          "zh": "他尽量做最少的工作。"
+        }
+      ]
+    },
+    "past": null,
+    "pastParticiple": null
+  }
+}

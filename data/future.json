@@ -1,0 +1,19 @@
+{
+  "forms": {
+    "base": {
+      "value": "future",
+      "examples": [
+        {
+          "en": "Think about the future.",
+          "zh": "思考一下未来。"
+        },
+        {
+          "en": "We are planning for a bright future.",
+          "zh": "我们正在计划一个光明的未来。"
+        }
+      ]
+    },
+    "past": null,
+    "pastParticiple": null
+  }
+}
