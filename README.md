@@ -1,159 +1,149 @@
+# 全屏单词 (Full-Screen Words)
 
-# 全屏单词
+一款沉浸式英语单词学习应用。主界面是一整屏可点击的随机单词；点击任一单词打开释义/例句弹窗，并可进入练习模式手敲英文句子。
 
-一个使用 Vue.js 和 Express.js 构建的全屏单词学习应用。前端展示随机单词，点击单词后显示详细释义和例句。后端使用 OpenRouter API 获取单词信息。
+> **按 ESC** 呼出登录/注册、个人中心、徽章、打卡等全部辅助界面。主界面保持纯粹的全屏单词。
 
-## 特性
+## ✨ 特性
 
-*   **全屏单词展示：** 在浏览器中以全屏模式展示随机生成的单词。
-*   **单词释义：** 点击单词后，弹出窗口显示该单词的详细释义和例句。
-*   **OpenRouter API 支持：** 使用 OpenRouter API 获取单词的释义和例句信息。
-*   **本地缓存：** 将已查询的单词信息缓存到本地文件，避免重复请求 API。
-*   **响应式设计：** 适应不同屏幕尺寸，提供最佳的用户体验。
+- **全屏单词**：始终保持沉浸式主界面，无导航栏、无 chrome。
+- **ESC 唤出面板**：登录、个人中心、徽章、打卡等通过抽屉式 Overlay 呼出。
+- **账号系统**：用户名 / 密码注册登录，JWT + bcrypt。
+- **答题练习**：练习模式中输入英文句子，实时校验。
+- **经验值与等级**：答对得 EXP，Combo 越高奖励越多；EXP 自动晋级。
+- **连续打卡**：每日打卡获得 EXP，连续打卡触发额外奖励。
+- **徽章系统**：词汇量、连击、连续打卡、正确率等多类徽章。
+- **OpenRouter 词典**：首次查询调用大模型，结果缓存进 SQLite。
 
-## 预览
+## 🧱 技术栈
 
-![全屏单词展示](docs/01.png)
-![单词释义弹窗](docs/02.png)
+| 端 | 技术 |
+| --- | --- |
+| 前端 | Vite + React 18 + TypeScript + Ant Design + antd-style + Less + Zustand |
+| 后端 | NestJS 10 + TypeORM + better-sqlite3 + Passport JWT + bcryptjs |
+| 数据 | SQLite（本地文件） |
+| 词义 | OpenRouter (`deepseek/deepseek-r1-distill-qwen-32b:free`) |
 
-## 快速开始
-
-### 前置条件
-
-在开始之前，请确保你已经安装了以下软件：
-
-*   [Node.js](https://nodejs.org/) (推荐 18+ 版本)
-*   [npm](https://www.npmjs.com/) (通常会随 Node.js 一起安装)
-*   一个 OpenRouter API Key (详见 [OpenRouter](https://openrouter.ai/))
-
-### 部署步骤
-
-1.  **克隆代码仓库：**
-
-    ```bash
-    git clone <你的代码仓库地址>
-    cd <项目目录>
-    ```
-
-2.  **配置环境变量：**
-
-    *   在项目根目录下创建一个 `.env` 文件。
-    *   添加你的 OpenRouter API Key 到 `.env` 文件中：
-
-        ```
-        OPENROUTER_API_KEY=<你的 OpenRouter API Key>
-        ```
-
-    *   **可选：** 如果你使用了代理，也请在 `.env` 文件中设置代理地址：
-
-        ```
-        HTTP_PROXY=http://127.0.0.1:7890
-        ```
-
-        请确保将 `http://127.0.0.1:7890` 替换为你实际的代理地址。
-
-3.  **安装后端依赖：**
-
-    ```bash
-    cd server
-    npm install
-    ```
-
-4.  **运行后端服务：**
-
-    ```bash
-    npm run start
-    ```
-
-    或者
-
-    ```bash
-    node index.js
-    ```
-
-    后端服务默认运行在 `http://localhost:3000`。
-
-5.  **安装前端依赖：**
-
-    打开新的终端窗口，执行以下命令：
-
-    ```bash
-    cd ../frontend
-    npm install
-    ```
-
-6.  **运行前端应用：**
-
-    ```bash
-    npm run dev
-    ```
-
-    前端应用默认运行在 `http://localhost:5173` (端口号可能会变化，请参考终端输出)。
-
-7.  **打开浏览器：**
-
-    在浏览器中访问前端应用的地址（例如 `http://localhost:5173`），即可开始使用全屏单词应用。
-
-### 目录结构
+## 📁 目录结构
 
 ```
-全屏单词/
-├── .git/                 # Git 仓库信息
-├── .gitignore            # Git 忽略文件配置
-├── data/                 # 缓存的单词数据 (JSON 文件)
-├── frontend/             # Vue.js 前端代码
-│   ├── .gitignore          # 前端 Git 忽略文件配置
-│   ├── jsconfig.json       # JavaScript 配置
-│   ├── package.json        # 前端依赖和脚本
-│   ├── public/             # 公共资源
-│   ├── src/                # 前端源代码
-│   │   ├── App.vue         # 主组件
-│   │   ├── main.js         # 入口文件
-│   │   └── ...
-│   ├── vite.config.js    # Vite 配置文件
-│   └── ...
-├── server/               # Express.js 后端代码
-│   ├── .gitignore          # 后端 Git 忽略文件配置
-│   ├── index.js            # 后端入口文件
-│   └── package.json        # 后端依赖和脚本
-├── README.md             # 说明文档
-└── ...
+full-screen-words/
+├── data/                 # 历史 JSON 词义缓存（一次性导入 SQLite）
+├── docs/                 # 截图等
+├── frontend/             # React 前端
+│   ├── src/
+│   │   ├── api/          # axios 客户端 + 类型
+│   │   ├── components/   # 通用组件 (WordModal / EscOverlay / LevelHud …)
+│   │   ├── features/     # 业务模块 (auth / profile / checkin)
+│   │   ├── pages/        # 页面 (WordsPage)
+│   │   ├── store/        # zustand
+│   │   ├── styles/       # 全局 less
+│   │   ├── App.tsx
+│   │   ├── main.tsx
+│   │   └── shadcnTheme.ts
+│   └── vite.config.ts
+├── server/               # NestJS 后端
+│   ├── src/
+│   │   ├── auth/         # 注册 / 登录 / JWT
+│   │   ├── badges/       # 徽章定义与解锁
+│   │   ├── checkin/      # 每日打卡
+│   │   ├── common/       # 公共工具 (等级换算 / 装饰器)
+│   │   ├── practice/     # 答题记录、EXP / Combo
+│   │   ├── seed/         # data/*.json -> SQLite 迁移
+│   │   ├── users/        # 用户与统计
+│   │   ├── words/        # 单词查询、OpenRouter
+│   │   ├── app.module.ts
+│   │   └── main.ts
+│   └── .env.example
+└── README.md
 ```
 
-### 配置说明
+## 🚀 启动
 
-*   `.env` 文件：用于配置 OpenRouter API Key 和代理设置。
-*   `server/index.js`：后端入口文件，处理 API 请求和数据缓存。
-*   `frontend/vite.config.js`：前端构建工具 Vite 的配置文件。
-*   `frontend/src/App.vue`：前端主组件，负责单词展示和单词信息弹窗。
+### 前置依赖
 
-## 贡献
+- Node.js ≥ 18
+- 一个 OpenRouter API Key（可选，仅在你想查询未缓存单词时需要）
 
-欢迎提交 Pull Request 来改进本项目！请先创建一个新的分支，进行修改后提交 PR。
+### 1. 后端
 
-## 许可证
-
-本项目使用 MIT 许可证，详情请见 [LICENSE](LICENSE) 文件。
-
-## 联系方式
-
-如有任何问题或建议，请通过以下方式联系我：
-
-*   [你的邮箱地址]
-*   [你的 GitHub 个人主页]
-
-感谢你的使用！
+```bash
+cd server
+cp .env.example .env
+# 编辑 .env，至少填好 JWT_SECRET 与 OPENROUTER_API_KEY
+npm install
+npm run seed       # 可选：把 data/*.json 导入到 SQLite
+npm run start:dev  # http://localhost:5321
 ```
 
-**注意事项：**
+`.env` 关键字段：
 
-*   请将 `<你的代码仓库地址>`、`<你的 OpenRouter API Key>`、`[你的邮箱地址]` 和 `[你的 GitHub 个人主页]` 替换成你实际的信息。
-*   如果你的项目包含 `LICENSE` 文件，请确保链接正确。 如果没有，可以考虑添加一个，并在 `README.md` 中引用。
-*   根据项目的实际情况，可能还需要添加更详细的配置说明和使用示例。
-*   请添加一些项目截图或演示链接，让用户更直观地了解项目。
-*   根据你的实际情况修改目录结构部分。
-*   如果你有更详细的部署或使用说明，也请补充到文档中。
-*   请注意OpenRouter 的使用条款和速率限制，确保你的应用符合要求。
-*   确保 `.env` 文件添加到 `.gitignore` 中，避免 API Key 泄露。
-*   如果需要，添加常见问题解答 (FAQ) 部分。
-*   考虑添加贡献者指南，说明如何参与项目的开发。
+| 变量 | 默认 | 说明 |
+| --- | --- | --- |
+| `PORT` | 5321 | 服务端口 |
+| `JWT_SECRET` | **必填** | 至少 16 位随机字符串。缺失 / 过短 / 等于模板默认值会直接启动失败。可用 `openssl rand -hex 32` 生成 |
+| `JWT_EXPIRES_IN` | 7d | Token 有效期 |
+| `DATABASE_PATH` | ./data.sqlite | SQLite 文件路径（相对 server/） |
+| `OPENROUTER_API_KEY` | (空) | OpenRouter Key |
+| `OPENROUTER_MODEL` | deepseek/... | 默认推理模型 |
+| `HTTP_PROXY` | (空) | 可选代理，例如 `http://127.0.0.1:7890` |
+| `CORS_ORIGIN` | http://localhost:2022 | 允许的前端源（多个逗号分隔） |
+| `DEFAULT_TZ` | Asia/Shanghai | 打卡日期判定使用的时区，遵循 IANA TZ 名称 |
+| `NODE_ENV` | development | 设为 `production` 时关闭 TypeORM `synchronize`，schema 变更需走迁移 |
+
+### 生产部署关于 schema 的注意
+
+dev 模式（默认）下 TypeORM 的 `synchronize: true` 会在每次启动时根据 entity 自动 ALTER 表，方便迭代但**绝对不要带到生产**——entity 字段误删会直接 DROP COLUMN 丢数据。
+
+正式上线前需要：
+1. `NODE_ENV=production` 关闭 synchronize；
+2. 通过 TypeORM CLI 生成 / 应用迁移（`typeorm migration:generate` / `migration:run`）；
+3. 备份 SQLite 文件再执行任何 schema 变更。
+
+### 2. 前端
+
+```bash
+cd frontend
+npm install
+npm run dev  # http://localhost:2022
+```
+
+Vite 已配置 `/api` 代理到 `http://localhost:5321`，无需额外设置。
+
+## 🎮 使用
+
+1. 打开 `http://localhost:2022`，主界面是一整屏随机单词。
+2. **按 `ESC`** 唤出右侧抽屉：未登录显示登录 / 注册；已登录显示个人中心 / 徽章 / 打卡。
+3. 点击任意单词，弹出释义与例句；切换到 **练习模式**，对照中文敲出英文句子，回车提交。
+4. 答对获得 EXP 与 Combo；登录状态下 EXP / 等级 / 徽章会实时累积。
+5. 每天进入 ESC 面板 → 打卡，领取连续打卡奖励。
+
+## 🧠 数据模型（SQLite）
+
+| 表 | 用途 |
+| --- | --- |
+| `users` | 账号 (username 唯一, passwordHash) |
+| `user_stats` | 每用户成长指标（EXP、combo、wordsLearned、streak…） |
+| `words` | 单词词义缓存（来自 OpenRouter 或 seed） |
+| `practice_records` | 每次答题流水 |
+| `check_ins` | 每日打卡记录 |
+| `badges` / `user_badges` | 徽章定义 / 用户解锁记录 |
+
+## 📜 主要 API
+
+| 方法 | 路径 | 说明 |
+| --- | --- | --- |
+| POST | `/api/auth/register` | 注册 |
+| POST | `/api/auth/login` | 登录，返回 JWT |
+| GET  | `/api/auth/me` | 当前用户完整资料 |
+| GET  | `/api/words/random?count=200` | 随机单词列表 |
+| POST | `/api/words/info` | 查询单词释义（带 SQLite 缓存） |
+| POST | `/api/practice/submit` | 提交答题（更新 EXP/Combo/徽章） |
+| POST | `/api/practice/learned/:word` | 标记单词已学习（wordsLearned++） |
+| GET  | `/api/checkin/status` | 打卡状态 |
+| POST | `/api/checkin` | 立即打卡 |
+| GET  | `/api/badges/me` | 当前用户徽章列表 |
+
+## 📄 License
+
+MIT
