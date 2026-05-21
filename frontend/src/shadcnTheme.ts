@@ -81,6 +81,10 @@ const darkTokens = {
 
   colorBorder: '#27272a',
   colorBorderSecondary: '#1f1f23',
+
+  // primary 反相到白底之后，按钮文字（默认 colorTextLightSolid = 白）会跟背景同色看不见，
+  // 强制把"叠在 primary 实色背景上的文字"换成深色
+  colorTextLightSolid: '#18181b',
 };
 
 const sharedRadius = {

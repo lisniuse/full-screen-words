@@ -2,6 +2,7 @@ import { create } from 'zustand';
 import { api } from '@/api';
 import { getToken, setToken, setUnauthorizedHandler } from '@/api/client';
 import { useLearnedStore } from '@/store/learned';
+import { clearMarkedThisSession } from '@/lib/markedSessionCache';
 import type { ProfileResponse } from '@/api/types';
 
 interface AuthState {
@@ -53,6 +54,7 @@ export const useAuthStore = create<AuthState>((set, get) => ({
   logout() {
     setToken(null);
     useLearnedStore.getState().clear();
+    clearMarkedThisSession();
     set({ token: null, profile: null });
   },
 

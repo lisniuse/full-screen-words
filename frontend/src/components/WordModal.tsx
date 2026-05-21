@@ -6,6 +6,10 @@ import type { WordInfo } from '@/api/types';
 import { useAuthStore } from '@/store/auth';
 import { useThemeStore } from '@/store/theme';
 import { useLearnedStore } from '@/store/learned';
+import {
+  addMarkedThisSession,
+  hasMarkedThisSession,
+} from '@/lib/markedSessionCache';
 
 const FORM_LABEL: Record<string, string> = {
   base: '原形',
@@ -320,11 +324,12 @@ const WordModal: React.FC<{
 
   useEffect(() => {
     if (!open || !word || !profile) return;
-    const learned = useLearnedStore.getState();
-    if (learned.has(word)) return; // 已知用户学过，跳过 markLearned API
+    if (hasMarkedThisSession(word)) return;
     api.practice.learned(word).then(() => {
-      learned.add(word);
+      addMarkedThisSession(word);
       refresh();
+      // 注意：故意不调 learnedStore.add(word)
+      // "已学"必须是"所有例句都答对"，仅打开 modal 不算
     });
   }, [open, word, profile, refresh]);
 
