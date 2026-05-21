@@ -222,9 +222,25 @@ const WordModal: React.FC<{
     return v === 'small' || v === 'large' ? v : 'medium';
   });
 
+  /** focus 第一个未答对（未 disabled）的练习输入框 */
+  const focusFirstPracticeInput = () => {
+    setTimeout(() => {
+      const root = document.querySelector('.ant-modal-content');
+      if (!root) return;
+      const input = root.querySelector<HTMLInputElement>(
+        'input:not([type="radio"]):not([disabled])',
+      );
+      input?.focus();
+    }, 60); // 让 React 把 <input> 挂上再 focus
+  };
+
   const updateMode = (next: 'study' | 'practice') => {
+    // 切 mode 之前清掉所有待发的 debounce 校验，避免 unmount 后的脏触发
+    Object.values(debounceTimers.current).forEach((t) => clearTimeout(t));
+    debounceTimers.current = {};
     setMode(next);
     localStorage.setItem('fsw-modal-mode', next);
+    if (next === 'practice') focusFirstPracticeInput();
   };
   const updateFontSize = (next: FontSize) => {
     setFontSize(next);
@@ -289,6 +305,8 @@ const WordModal: React.FC<{
           }
         });
         setExamples(next);
+        // 数据就绪时如果当前是练习模式，把焦点放到第一个未答对的输入框
+        if (modeRef.current === 'practice') focusFirstPracticeInput();
       })
       .catch((e) => {
         if (e?.response?.status === 401) {
