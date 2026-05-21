@@ -83,7 +83,7 @@ npm run start:dev  # http://localhost:5321
 | `PORT` | 5321 | 服务端口 |
 | `JWT_SECRET` | **必填** | 至少 16 位随机字符串。缺失 / 过短 / 等于模板默认值会直接启动失败。可用 `openssl rand -hex 32` 生成 |
 | `JWT_EXPIRES_IN` | 7d | Token 有效期 |
-| `DATABASE_PATH` | ./data.sqlite | SQLite 文件路径（相对 server/） |
+| `DATABASE_PATH` | ~/.full-screen-words/data.sqlite | SQLite 文件路径，默认到用户 home 目录（跨平台） |
 | `OPENROUTER_API_KEY` | (空) | OpenRouter Key |
 | `OPENROUTER_MODEL` | deepseek/... | 默认推理模型 |
 | `HTTP_PROXY` | (空) | 可选代理，例如 `http://127.0.0.1:7890` |

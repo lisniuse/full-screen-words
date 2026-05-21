@@ -72,7 +72,7 @@ NestJS 10 + TypeORM (better-sqlite3). `app.module.ts` wires:
 
 ### Database
 
-SQLite single file at `server/data.sqlite`, **tracked in git** (the user opted in for shareable seed data). `synchronize` is **on for non-prod only** (toggled by `NODE_ENV`); production must go through TypeORM migrations. Complete schema with ER diagram lives in `docs/SCHEMA.md` — refer there before changing entity files. The `practice_records` table contains rows with `formType='_view_'` (modal-open markers); always filter them out when querying history.
+SQLite single file at `~/.full-screen-words/data.sqlite` (cross-platform via `os.homedir()`), **NOT tracked in git** — it's user runtime data. On startup `app.module.ts` `mkdirSync`s the parent dir and one-shot migrates any legacy `server/data.sqlite` over (so existing dev users don't lose accounts/practice records). Override path via `DATABASE_PATH` env. `synchronize` is **on for non-prod only** (toggled by `NODE_ENV`); production must go through TypeORM migrations. Complete schema with ER diagram lives in `docs/SCHEMA.md` — refer there before changing entity files. The `practice_records` table contains rows with `formType='_view_'` (modal-open markers); always filter them out when querying history.
 
 ### Ports & env
 

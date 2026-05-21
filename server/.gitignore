@@ -2,7 +2,6 @@ node_modules
 dist
 .env
 logs
-# SQLite 数据库默认随仓库提交（便于分享种子数据 / 单词缓存）
-# 如果不希望本地 dev 数据库被提交，可以改用一个专门的种子库文件名，例如把
-# DATABASE_PATH=./data.sqlite 改为 ./dev.sqlite，并在此处加 dev.sqlite
+# 数据库放到用户 home 目录（~/.full-screen-words/data.sqlite），不入仓
+*.sqlite
 *.sqlite-journal
