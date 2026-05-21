@@ -156,6 +156,62 @@ export class PracticeService {
   }
 
   /**
+   * 返回"已学"单词列表。
+   *
+   * 判定条件：该单词缓存里所有非空 form 的所有 example.en，
+   * 都必须在该用户的正确答题记录里出现过——即"全员答对"。
+   * 仅打开过 modal、答错、或只答对部分例句的单词不算已学。
+   */
+  async listLearnedWords(userId: number): Promise<string[]> {
+    const records = await this.records.find({
+      where: { userId, correct: true },
+    });
+
+    // Map<word, Map<formType, Set<expected en>>>
+    const correctByWord = new Map<string, Map<string, Set<string>>>();
+    for (const r of records) {
+      if (r.formType === '_view_') continue;
+      let byForm = correctByWord.get(r.word);
+      if (!byForm) {
+        byForm = new Map();
+        correctByWord.set(r.word, byForm);
+      }
+      let set = byForm.get(r.formType);
+      if (!set) {
+        set = new Set<string>();
+        byForm.set(r.formType, set);
+      }
+      set.add(r.expected);
+    }
+
+    const learned: string[] = [];
+    for (const [word, byForm] of correctByWord) {
+      const cached = await this.wordsService.getCachedInfo(word);
+      if (!cached?.forms) continue;
+
+      let hasAnyExample = false;
+      let allCovered = true;
+      for (const [formType, form] of Object.entries(cached.forms)) {
+        const f = form as any;
+        const examples: Array<{ en?: string }> | undefined = f?.examples;
+        if (!Array.isArray(examples) || examples.length === 0) continue;
+        hasAnyExample = true;
+        const correctSet = byForm.get(formType) ?? new Set<string>();
+        for (const ex of examples) {
+          if (!ex?.en || !correctSet.has(ex.en)) {
+            allCovered = false;
+            break;
+          }
+        }
+        if (!allCovered) break;
+      }
+      if (hasAnyExample && allCovered) learned.push(word);
+    }
+
+    return learned;
+  }
+
+  /**
    * 列出某用户某单词中所有已经答对过的例句索引，按 formType 分组。
    * 返回形如：{ base: [0, 1], past: [0] }
    */

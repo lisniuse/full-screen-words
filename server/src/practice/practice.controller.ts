@@ -33,6 +33,11 @@ export class PracticeController {
     return this.practice.getMasteredExamples(user.id, word);
   }
 
+  @Get('learned-words')
+  learnedWords(@CurrentUser() user: CurrentUserPayload) {
+    return this.practice.listLearnedWords(user.id);
+  }
+
   @Get('recent')
   recent(
     @CurrentUser() user: CurrentUserPayload,

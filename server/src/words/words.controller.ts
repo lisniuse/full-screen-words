@@ -9,9 +9,18 @@ import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 export class WordsController {
   constructor(private readonly words: WordsService) {}
 
+  @Get('levels')
+  levels() {
+    return this.words.listLevels();
+  }
+
   @Get('random')
   random(@Query() q: RandomWordsQueryDto) {
-    return { words: this.words.generateRandomWords(q.count ?? 200) };
+    const level = q.level ?? 'cet4';
+    return {
+      level,
+      words: this.words.generateRandomWords(level, q.count ?? 1500),
+    };
   }
 
   // 单词释义：可能调用 OpenRouter，限制 20 次 / 分钟防止刷外网额度

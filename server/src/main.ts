@@ -10,13 +10,19 @@ const FORBIDDEN_SECRETS = new Set(['dev-secret', 'change-me', 'please-change-me-
 function validateConfig(config: ConfigService) {
   const secret = config.get<string>('JWT_SECRET');
   if (!secret) {
-    throw new Error('[fatal] JWT_SECRET 未设置。请在 server/.env 中配置一个长随机字符串。');
+    throw new Error(
+      '[fatal] JWT_SECRET is not set. Configure a long random string in server/.env',
+    );
   }
   if (secret.length < 16) {
-    throw new Error('[fatal] JWT_SECRET 长度不足 16，太弱。请使用至少 32 字符的随机串。');
+    throw new Error(
+      '[fatal] JWT_SECRET is too short (<16 chars). Use at least a 32-char random string.',
+    );
   }
   if (FORBIDDEN_SECRETS.has(secret)) {
-    throw new Error('[fatal] JWT_SECRET 仍是模板默认值，必须改成真实随机串。');
+    throw new Error(
+      '[fatal] JWT_SECRET is still a template placeholder. Replace it with a real random secret.',
+    );
   }
 }
 

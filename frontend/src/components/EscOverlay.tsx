@@ -1,8 +1,10 @@
-import React from 'react';
-import { Drawer, Tabs, Tooltip } from 'antd';
+import React, { useEffect } from 'react';
+import { Drawer, Select, Tabs, Tooltip } from 'antd';
 import { createStyles } from 'antd-style';
+import { api } from '@/api';
 import { useAuthStore } from '@/store/auth';
 import { useThemeStore } from '@/store/theme';
+import { useLevelStore } from '@/store/level';
 import AuthPanel from '@/features/auth/AuthPanel';
 import ProfilePanel from '@/features/profile/ProfilePanel';
 import BadgesPanel from '@/features/profile/BadgesPanel';
@@ -77,6 +79,22 @@ const useStyles = createStyles(({ css, token }) => ({
       transform: 'rotate(45deg)',
     },
   }),
+  levelSection: css({
+    padding: '12px 24px 0',
+    display: 'flex',
+    alignItems: 'center',
+    gap: 12,
+    fontSize: 13,
+    color: token.colorTextSecondary,
+  }),
+  levelLabel: css({
+    flexShrink: 0,
+    fontWeight: 500,
+  }),
+  levelCount: css({
+    fontSize: 11,
+    color: token.colorTextTertiary,
+  }),
 }));
 
 const EscOverlay: React.FC<{ open: boolean; onClose: () => void }> = ({
@@ -87,7 +105,25 @@ const EscOverlay: React.FC<{ open: boolean; onClose: () => void }> = ({
   const profile = useAuthStore((s) => s.profile);
   const mode = useThemeStore((s) => s.mode);
   const toggleTheme = useThemeStore((s) => s.toggle);
+  const level = useLevelStore((s) => s.level);
+  const levels = useLevelStore((s) => s.levels);
+  const hydratedLevels = useLevelStore((s) => s.hydrated);
+  const setLevel = useLevelStore((s) => s.setLevel);
+  const setLevels = useLevelStore((s) => s.setLevels);
   const isLoggedIn = !!profile;
+
+  // 抽屉首次打开时拉取词库列表（每个用户/会话仅请求一次）
+  useEffect(() => {
+    if (!open || hydratedLevels) return;
+    api.words
+      .levels()
+      .then(setLevels)
+      .catch(() => {
+        /* 后端没起来时忽略，下次再试 */
+      });
+  }, [open, hydratedLevels, setLevels]);
+
+  const activeLevelMeta = levels.find((l) => l.id === level);
 
   return (
     <Drawer
@@ -120,6 +156,35 @@ const EscOverlay: React.FC<{ open: boolean; onClose: () => void }> = ({
         </div>
       }
     >
+      <div className={styles.levelSection}>
+        <span className={styles.levelLabel}>词库</span>
+        <Select
+          size="small"
+          value={level}
+          style={{ flex: 1 }}
+          onChange={setLevel}
+          options={(levels.length > 0
+            ? levels
+            : [{ id: level, label: level, count: 0 }]
+          ).map((l) => ({
+            value: l.id,
+            label: (
+              <span>
+                {l.label}
+                <span className={styles.levelCount}>
+                  {l.count > 0 ? ` · ${l.count} 词` : ''}
+                </span>
+              </span>
+            ),
+          }))}
+        />
+        {activeLevelMeta && (
+          <Tooltip title={`当前 ${activeLevelMeta.label} 共 ${activeLevelMeta.count} 词`}>
+            <span className={styles.levelCount}>{activeLevelMeta.count}</span>
+          </Tooltip>
+        )}
+      </div>
+
       <div className={styles.body}>
         {isLoggedIn ? (
           <Tabs

@@ -24,10 +24,18 @@ export const api = {
         .then((r) => r.data),
   },
   words: {
-    random: (count = 200) =>
+    levels: () =>
       client
-        .get<{ words: string[] }>('/words/random', { params: { count } })
-        .then((r) => r.data.words),
+        .get<Array<{ id: string; label: string; count: number }>>(
+          '/words/levels',
+        )
+        .then((r) => r.data),
+    random: (level: string, count = 1500) =>
+      client
+        .get<{ level: string; words: string[] }>('/words/random', {
+          params: { level, count },
+        })
+        .then((r) => r.data),
     info: (word: string) =>
       client.post<WordInfo>('/words/info', { word }).then((r) => r.data),
   },
@@ -45,6 +53,8 @@ export const api = {
       client
         .get<Record<string, number[]>>(`/practice/mastered/${encodeURIComponent(word)}`)
         .then((r) => r.data),
+    learnedWords: () =>
+      client.get<string[]>('/practice/learned-words').then((r) => r.data),
   },
   checkin: {
     status: () => client.get<CheckInStatus>('/checkin/status').then((r) => r.data),

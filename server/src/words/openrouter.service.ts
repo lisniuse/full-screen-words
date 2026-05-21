@@ -78,7 +78,7 @@ export class OpenRouterService {
         }
       } catch (e: any) {
         this.logger.warn(
-          `OpenRouter 返回不可解析 (word=${word}): ${e.message}`,
+          `OpenRouter returned unparseable payload (word=${word}): ${e.message}`,
         );
         throw new BadGatewayException('词义返回格式错误，请重试');
       }
@@ -86,7 +86,7 @@ export class OpenRouterService {
       return content;
     } catch (err: any) {
       if (err instanceof BadGatewayException) throw err;
-      this.logger.error(`OpenRouter 请求失败: ${err.message}`);
+      this.logger.error(`OpenRouter request failed: ${err.message}`);
       throw new InternalServerErrorException('词义请求失败');
     }
   }

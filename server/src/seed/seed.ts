@@ -14,7 +14,7 @@ async function main() {
   const dataDir = path.resolve(process.cwd(), '..', 'data');
   if (!fs.existsSync(dataDir)) {
     // eslint-disable-next-line no-console
-    console.error(`找不到数据目录：${dataDir}`);
+    console.error(`data directory not found: ${dataDir}`);
     process.exit(1);
   }
 
@@ -23,7 +23,7 @@ async function main() {
 
   const files = fs.readdirSync(dataDir).filter((f) => f.endsWith('.json'));
   // eslint-disable-next-line no-console
-  console.log(`发现 ${files.length} 个单词缓存文件，开始导入...`);
+  console.log(`found ${files.length} cached word files, importing...`);
 
   let ok = 0;
   let skipped = 0;
@@ -39,11 +39,11 @@ async function main() {
     } catch (err: any) {
       skipped += 1;
       // eslint-disable-next-line no-console
-      console.warn(`跳过 ${file}：${err.message}`);
+      console.warn(`skip ${file}: ${err.message}`);
     }
   }
   // eslint-disable-next-line no-console
-  console.log(`完成。成功 ${ok}，跳过 ${skipped}`);
+  console.log(`done. imported ${ok}, skipped ${skipped}`);
   await app.close();
 }
 

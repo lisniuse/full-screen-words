@@ -5,7 +5,7 @@ import { api } from '@/api';
 import type { WordInfo } from '@/api/types';
 import { useAuthStore } from '@/store/auth';
 import { useThemeStore } from '@/store/theme';
-import { hasLearned, markLearned as markLearnedLocal } from '@/lib/learnedCache';
+import { useLearnedStore } from '@/store/learned';
 
 const FORM_LABEL: Record<string, string> = {
   base: '原形',
@@ -320,9 +320,10 @@ const WordModal: React.FC<{
 
   useEffect(() => {
     if (!open || !word || !profile) return;
-    if (hasLearned(word)) return; // 本次会话已通知过，跳过
+    const learned = useLearnedStore.getState();
+    if (learned.has(word)) return; // 已知用户学过，跳过 markLearned API
     api.practice.learned(word).then(() => {
-      markLearnedLocal(word);
+      learned.add(word);
       refresh();
     });
   }, [open, word, profile, refresh]);
@@ -407,7 +408,7 @@ const WordModal: React.FC<{
       });
       if (res.correct) {
         if (res.isRepeat) {
-          message.info('已掌握，不再重复给奖励');
+          message.info('复习模式 · 本次不计奖励');
         } else {
           message.success(`+${res.expGained} EXP · Combo ${res.combo}`);
         }
@@ -492,6 +493,47 @@ const WordModal: React.FC<{
     [info],
   );
 
+  // "已学"判定：所有非空 form 的所有例句都 submitted + correct
+  const allMastered = useMemo(() => {
+    let hasAny = false;
+    for (const list of Object.values(examples)) {
+      if (!list || list.length === 0) continue;
+      hasAny = true;
+      for (const e of list) {
+        if (!(e.submitted && e.status === 'correct')) return false;
+      }
+    }
+    return hasAny;
+  }, [examples]);
+
+  // 全员答对的瞬间把当前 word 加入 learnedStore，让主页绿色高亮即时刷新
+  useEffect(() => {
+    if (!allMastered || !word) return;
+    useLearnedStore.getState().add(word);
+  }, [allMastered, word]);
+
+  /** 重学：清空本次 modal 里所有例句的输入与状态，进入练习模式重新作答；
+   *  服务端已有的 correct 记录会让 submit 返回 isRepeat=true，不再发奖励，
+   *  也不变更任何 stats，纯粹复习用。 */
+  const resetForReview = () => {
+    Object.values(debounceTimers.current).forEach((t) => clearTimeout(t));
+    debounceTimers.current = {};
+    setExamples((prev) => {
+      const next: Record<string, ExampleState[]> = {};
+      for (const [k, list] of Object.entries(prev)) {
+        next[k] = list.map((ex) => ({
+          ...ex,
+          input: '',
+          status: '',
+          submitted: false,
+        }));
+      }
+      return next;
+    });
+    if (mode !== 'practice') updateMode('practice');
+    else focusFirstPracticeInput();
+  };
+
   return (
     <Modal
       open={open}
@@ -538,6 +580,13 @@ const WordModal: React.FC<{
               ]}
             />
           </Tooltip>
+          {allMastered && (
+            <Tooltip title="清空本词所有例句的输入状态，重新练习一遍（不计经验、不影响统计）">
+              <Button size="small" onClick={resetForReview}>
+                重学
+              </Button>
+            </Tooltip>
+          )}
           {profile ? (
             <Tag color="default">
               Lv.{profile.level.level} · {profile.stats.combo > 0 ? `🔥${profile.stats.combo}` : '准备答题'}
