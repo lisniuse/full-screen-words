@@ -5,7 +5,7 @@ import { api } from '@/api';
 import type { CheckInStatus } from '@/api/types';
 import { useAuthStore } from '@/store/auth';
 
-const useStyles = createStyles(({ css }) => ({
+const useStyles = createStyles(({ css, token }) => ({
   wrap: css({
     paddingTop: 16,
     display: 'flex',
@@ -13,21 +13,21 @@ const useStyles = createStyles(({ css }) => ({
     gap: 16,
   }),
   card: css({
-    border: '1px solid #f0f0f0',
+    border: `1px solid ${token.colorBorderSecondary}`,
     borderRadius: 12,
     padding: 20,
-    background: '#fafafa',
+    background: token.colorBgLayout,
     textAlign: 'center',
   }),
   big: css({
     fontSize: 40,
     fontWeight: 700,
-    color: '#18181b',
+    color: token.colorText,
     lineHeight: 1,
     margin: '8px 0 4px',
   }),
   caption: css({
-    color: '#737373',
+    color: token.colorTextTertiary,
     fontSize: 12,
   }),
   grid: css({

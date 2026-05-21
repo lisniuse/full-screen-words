@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { Button, Progress, Space, Statistic, Tag } from 'antd';
+import { Button, Progress, Space, Statistic, Tag, theme as antdTheme } from 'antd';
 import { createStyles } from 'antd-style';
 import { useAuthStore } from '@/store/auth';
 import ChangePasswordModal from './ChangePasswordModal';
 
-const useStyles = createStyles(({ css }) => ({
+const useStyles = createStyles(({ css, token }) => ({
   wrap: css({
     paddingTop: 16,
     display: 'flex',
@@ -12,8 +12,8 @@ const useStyles = createStyles(({ css }) => ({
     gap: 20,
   }),
   card: css({
-    background: '#fafafa',
-    border: '1px solid #f0f0f0',
+    background: token.colorBgLayout,
+    border: `1px solid ${token.colorBorderSecondary}`,
     borderRadius: 12,
     padding: 16,
   }),
@@ -26,12 +26,12 @@ const useStyles = createStyles(({ css }) => ({
   levelBig: css({
     fontSize: 28,
     fontWeight: 700,
-    color: '#18181b',
+    color: token.colorText,
     lineHeight: 1,
   }),
   expText: css({
     fontSize: 12,
-    color: '#737373',
+    color: token.colorTextTertiary,
   }),
   grid: css({
     display: 'grid',
@@ -39,8 +39,8 @@ const useStyles = createStyles(({ css }) => ({
     gap: 12,
   }),
   statBox: css({
-    background: '#ffffff',
-    border: '1px solid #f0f0f0',
+    background: token.colorBgContainer,
+    border: `1px solid ${token.colorBorderSecondary}`,
     borderRadius: 10,
     padding: '12px 14px',
   }),
@@ -51,6 +51,7 @@ const useStyles = createStyles(({ css }) => ({
 
 const ProfilePanel: React.FC = () => {
   const { styles } = useStyles();
+  const { token } = antdTheme.useToken();
   const profile = useAuthStore((s) => s.profile);
   const logout = useAuthStore((s) => s.logout);
   const [pwOpen, setPwOpen] = useState(false);
@@ -73,7 +74,7 @@ const ProfilePanel: React.FC = () => {
         <Progress
           percent={Math.round(level.progress * 100)}
           showInfo={false}
-          strokeColor="#18181b"
+          strokeColor={token.colorText}
         />
       </div>
 

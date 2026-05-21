@@ -1,7 +1,8 @@
 import 'reflect-metadata';
 import { NestFactory } from '@nestjs/core';
-import { Logger, ValidationPipe } from '@nestjs/common';
+import { ValidationPipe } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
+import { Logger as PinoLogger } from 'nestjs-pino';
 import { AppModule } from './app.module';
 
 const FORBIDDEN_SECRETS = new Set(['dev-secret', 'change-me', 'please-change-me-to-a-long-random-string']);
@@ -20,7 +21,10 @@ function validateConfig(config: ConfigService) {
 }
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  // bufferLogs: 在 pino 加载前的启动阶段日志先缓冲，等 useLogger 注入后统一冲刷
+  const app = await NestFactory.create(AppModule, { bufferLogs: true });
+  app.useLogger(app.get(PinoLogger));
+
   const config = app.get(ConfigService);
 
   validateConfig(config);
@@ -42,8 +46,7 @@ async function bootstrap() {
 
   const port = Number(config.get<string>('PORT') ?? 5321);
   await app.listen(port);
-  // eslint-disable-next-line no-console
-  console.log(`[server] http://localhost:${port}`);
+  app.get(PinoLogger).log(`Listening on http://localhost:${port}`, 'Bootstrap');
 }
 
 bootstrap();

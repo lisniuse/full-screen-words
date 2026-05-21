@@ -1,9 +1,10 @@
-import React, { useEffect, useMemo, useState } from 'react';
-import { Alert, Button, Empty, Modal, Segmented, Spin, Tag, message } from 'antd';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
+import { Alert, Button, Empty, Modal, Segmented, Spin, Tag, Tooltip, message } from 'antd';
 import { createStyles } from 'antd-style';
 import { api } from '@/api';
 import type { WordInfo } from '@/api/types';
 import { useAuthStore } from '@/store/auth';
+import { useThemeStore } from '@/store/theme';
 import { hasLearned, markLearned as markLearnedLocal } from '@/lib/learnedCache';
 
 const FORM_LABEL: Record<string, string> = {
@@ -17,7 +18,19 @@ const FORM_LABEL: Record<string, string> = {
   superlative: '最高级',
 };
 
-const useStyles = createStyles(({ css }) => ({
+type FontSize = 'small' | 'medium' | 'large';
+
+const FONT_SCALE: Record<FontSize, number> = {
+  small: 1,
+  medium: 1.2,
+  large: 1.4,
+};
+
+const useStyles = createStyles(
+  (
+    { css, token },
+    { isDark, scale }: { isDark: boolean; scale: number },
+  ) => ({
   modal: css({
     '.ant-modal-content': {
       borderRadius: 16,
@@ -30,8 +43,10 @@ const useStyles = createStyles(({ css }) => ({
   }),
   header: css({
     padding: '20px 24px 16px',
-    background: 'linear-gradient(135deg, #fafafa 0%, #ffffff 100%)',
-    borderBottom: '1px solid #f0f0f0',
+    background: isDark
+      ? `linear-gradient(135deg, ${token.colorBgLayout} 0%, ${token.colorBgContainer} 100%)`
+      : `linear-gradient(135deg, ${token.colorBgLayout} 0%, ${token.colorBgContainer} 100%)`,
+    borderBottom: `1px solid ${token.colorBorderSecondary}`,
     display: 'flex',
     flexDirection: 'column',
     gap: 8,
@@ -39,7 +54,7 @@ const useStyles = createStyles(({ css }) => ({
   word: css({
     fontSize: 28,
     fontWeight: 700,
-    color: '#18181b',
+    color: token.colorText,
     lineHeight: 1.1,
     letterSpacing: 0.2,
   }),
@@ -56,8 +71,8 @@ const useStyles = createStyles(({ css }) => ({
     overflowY: 'auto',
   }),
   formCard: css({
-    border: '1px solid #f0f0f0',
-    background: '#fafafa',
+    border: `1px solid ${token.colorBorderSecondary}`,
+    background: token.colorBgLayout,
     borderRadius: 12,
     padding: 16,
     marginBottom: 16,
@@ -73,18 +88,18 @@ const useStyles = createStyles(({ css }) => ({
     marginBottom: 12,
   }),
   formTitle: css({
-    fontSize: 13,
-    color: '#262626',
+    fontSize: Math.round(13 * scale),
+    color: token.colorTextSecondary,
     fontWeight: 600,
   }),
   formValue: css({
-    fontSize: 18,
-    color: '#18181b',
+    fontSize: Math.round(18 * scale),
+    color: token.colorText,
     fontWeight: 600,
   }),
   example: css({
-    background: '#ffffff',
-    border: '1px solid #f0f0f0',
+    background: token.colorBgContainer,
+    border: `1px solid ${token.colorBorderSecondary}`,
     borderRadius: 10,
     padding: '12px 14px',
     marginTop: 10,
@@ -93,44 +108,90 @@ const useStyles = createStyles(({ css }) => ({
     },
   }),
   en: css({
-    fontSize: 14,
-    color: '#18181b',
+    fontSize: Math.round(14 * scale),
+    color: token.colorText,
     lineHeight: 1.6,
     marginBottom: 4,
+    // 单行显示；弹窗宽度由 JS 按最长句子计算，少数极长句子超出时改横向滚动
+    whiteSpace: 'nowrap',
+    overflowX: 'auto',
   }),
   zh: css({
-    fontSize: 13,
-    color: '#737373',
+    fontSize: Math.round(13 * scale),
+    color: token.colorTextTertiary,
     lineHeight: 1.6,
   }),
   input: css({
     width: '100%',
     padding: '8px 12px',
-    border: '1px solid #e4e4e7',
+    border: `1px solid ${token.colorBorder}`,
     borderRadius: 8,
-    fontSize: 14,
+    fontSize: Math.round(14 * scale),
     outline: 'none',
     transition: 'all 0.2s ease',
-    background: '#ffffff',
-    color: '#18181b',
+    background: token.colorBgContainer,
+    color: token.colorText,
+    whiteSpace: 'nowrap',
+    overflowX: 'auto',
     '&:focus': {
-      borderColor: '#18181b',
+      borderColor: token.colorText,
+    },
+    '&:disabled': {
+      background: token.colorBgLayout,
+      color: token.colorTextTertiary,
+      cursor: 'not-allowed',
     },
   }),
+  modeHint: css({
+    fontSize: 11,
+    color: token.colorTextTertiary,
+    marginLeft: 8,
+    display: 'inline-flex',
+    alignItems: 'center',
+    gap: 4,
+  }),
+  kbdBadge: css({
+    display: 'inline-block',
+    padding: '0 5px',
+    minWidth: 22,
+    textAlign: 'center',
+    border: `1px solid ${token.colorBorder}`,
+    borderBottomWidth: 2,
+    borderRadius: 4,
+    background: token.colorBgLayout,
+    fontFamily:
+      'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace',
+    fontSize: 10,
+    color: token.colorText,
+    lineHeight: '14px',
+  }),
   inputCorrect: css({
-    borderColor: '#22c55e !important',
-    background: '#f0fdf4',
+    borderColor: `${token.colorSuccess} !important`,
+    background: `${isDark ? 'rgba(34,197,94,0.12)' : '#f0fdf4'} !important`,
   }),
   inputWrong: css({
-    borderColor: '#ef4444 !important',
-    background: '#fef2f2',
+    borderColor: `${token.colorError} !important`,
+    background: `${isDark ? 'rgba(239,68,68,0.12)' : '#fef2f2'} !important`,
   }),
   result: css({
     marginTop: 6,
     fontSize: 12,
-    color: '#737373',
+    color: token.colorTextTertiary,
   }),
-}));
+  loading: css({
+    padding: 60,
+    textAlign: 'center',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    gap: 12,
+  }),
+  loadingTip: css({
+    fontSize: 13,
+    color: token.colorTextTertiary,
+  }),
+}),
+);
 
 interface ExampleState {
   expected: string;
@@ -145,7 +206,7 @@ const WordModal: React.FC<{
   open: boolean;
   onClose: () => void;
 }> = ({ word, open, onClose }) => {
-  const { styles, cx } = useStyles();
+  const isDark = useThemeStore((s) => s.mode === 'dark');
   const profile = useAuthStore((s) => s.profile);
   const refresh = useAuthStore((s) => s.refresh);
 
@@ -156,11 +217,40 @@ const WordModal: React.FC<{
     const v = localStorage.getItem('fsw-modal-mode');
     return v === 'practice' ? 'practice' : 'study';
   });
+  const [fontSize, setFontSize] = useState<FontSize>(() => {
+    const v = localStorage.getItem('fsw-modal-fontsize');
+    return v === 'small' || v === 'large' ? v : 'medium';
+  });
 
   const updateMode = (next: 'study' | 'practice') => {
     setMode(next);
     localStorage.setItem('fsw-modal-mode', next);
   };
+  const updateFontSize = (next: FontSize) => {
+    setFontSize(next);
+    localStorage.setItem('fsw-modal-fontsize', next);
+  };
+
+  const { styles, cx } = useStyles({ isDark, scale: FONT_SCALE[fontSize] });
+
+  // examplesRef / modeRef：避免 setTimeout 闭包拿到陈旧 state
+  const examplesRef = useRef<Record<string, ExampleState[]>>({});
+  const modeRef = useRef(mode);
+  const debounceTimers = useRef<Record<string, ReturnType<typeof setTimeout>>>({});
+
+  useEffect(() => {
+    examplesRef.current = examples;
+  });
+  useEffect(() => {
+    modeRef.current = mode;
+  }, [mode]);
+
+  // 关闭时清掉所有 debounce 计时器，避免泄漏
+  useEffect(() => {
+    if (open) return;
+    Object.values(debounceTimers.current).forEach((t) => clearTimeout(t));
+    debounceTimers.current = {};
+  }, [open]);
   const [examples, setExamples] = useState<
     Record<string, ExampleState[]>
   >({});
@@ -219,41 +309,72 @@ const WordModal: React.FC<{
     });
   }, [open, word, profile, refresh]);
 
+  /**
+   * 校验前规范化：
+   *  - 大小写不敏感
+   *  - 忽略所有标点 / 符号（\p{P} \p{S}）
+   *  - 空格数量不敏感（多空格折叠为一个）
+   */
   const normalize = (s: string) =>
-    s.toLowerCase().replace(/[.,!?;:"']/g, '').replace(/\s+/g, ' ').trim();
+    s
+      .toLowerCase()
+      .replace(/[\p{P}\p{S}]/gu, '')
+      .replace(/\s+/g, ' ')
+      .trim();
+
+  const VALIDATE_DEBOUNCE_MS = 550;
 
   const onInput = (formType: string, idx: number, value: string) => {
     setExamples((prev) => {
       const list = prev[formType]?.slice() ?? [];
       if (!list[idx]) return prev;
-      // 答错重新编辑时，清掉上一次的红色状态，让用户专注当前输入
+      // 一边重输一边清掉之前的状态色，输完停顿再统一判
       const ex = {
         ...list[idx],
         input: value,
-        status: list[idx].status === 'incorrect' ? '' : list[idx].status,
+        status: '' as '' | 'correct' | 'incorrect',
       };
       list[idx] = ex;
       return { ...prev, [formType]: list };
     });
+
+    const key = `${formType}-${idx}`;
+    const existingTimer = debounceTimers.current[key];
+    if (existingTimer) clearTimeout(existingTimer);
+
+    // 空输入不触发校验；保持中性
+    if (!value.trim()) return;
+
+    debounceTimers.current[key] = setTimeout(() => {
+      delete debounceTimers.current[key];
+      submit(formType, idx);
+    }, VALIDATE_DEBOUNCE_MS);
   };
 
+  /**
+   * 校验输入：先本地比对，仅在 correct 时上报后端（结合 #1 的节流验证设计——
+   * 错误输入只显示红框，不写流水也不消耗 combo）。
+   */
   const submit = async (formType: string, idx: number) => {
-    const ex = examples[formType]?.[idx];
+    const ex = examplesRef.current[formType]?.[idx];
     if (!ex || !word) return;
-    // 已答对的题目不再处理
     if (ex.submitted && ex.status === 'correct') return;
+    if (!ex.input.trim()) return;
 
     const correct = normalize(ex.input) === normalize(ex.expected);
+
     setExamples((prev) => {
       const list = prev[formType]?.slice() ?? [];
+      if (!list[idx]) return prev;
       list[idx] = {
-        ...ex,
+        ...list[idx],
         status: correct ? 'correct' : 'incorrect',
-        // 仅在答对时锁定输入；答错允许继续修改重试
         submitted: correct,
       };
       return { ...prev, [formType]: list };
     });
+
+    if (!correct) return;
 
     if (!profile) {
       message.info('登录后可累计经验值和成长记录（按 ESC 打开面板）');
@@ -285,6 +406,66 @@ const WordModal: React.FC<{
     }
   };
 
+  // Tab 切换学习/练习（modal 打开时）
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key !== 'Tab') return;
+      e.preventDefault();
+      e.stopPropagation();
+      const next = modeRef.current === 'study' ? 'practice' : 'study';
+      updateMode(next);
+    };
+    window.addEventListener('keydown', onKey, true);
+    return () => window.removeEventListener('keydown', onKey, true);
+  }, [open]);
+
+  // 自适应宽度：DOM 临时元素实测最长例句的真实渲染像素宽
+  // 同时把用户当前输入也算进去——如果敲的内容比原句还长，modal 跟着撑开
+  const modalWidth = useMemo(() => {
+    const collected: string[] = [];
+    Object.values(examples).forEach((list) =>
+      list?.forEach((e) => {
+        collected.push(e.expected);
+        if (e.input) collected.push(e.input);
+      }),
+    );
+    if (collected.length === 0 || typeof document === 'undefined') return 620;
+
+    const scale = FONT_SCALE[fontSize];
+    const pxFontSize = Math.round(14 * scale);
+
+    const probe = document.createElement('span');
+    probe.style.cssText = [
+      'position:fixed',
+      'visibility:hidden',
+      'pointer-events:none',
+      'top:-9999px',
+      'left:0',
+      'white-space:nowrap',
+      `font-size:${pxFontSize}px`,
+      'font-family:inherit',
+      'font-weight:400',
+      'letter-spacing:normal',
+    ].join(';');
+    document.body.appendChild(probe);
+
+    let longestPx = 0;
+    for (const s of collected) {
+      probe.textContent = s;
+      longestPx = Math.max(longestPx, probe.scrollWidth);
+    }
+    document.body.removeChild(probe);
+
+    // chrome：Modal body padding (24×2) + formCard padding (16×2) + example padding (14×2) +
+    //         formCard/example border (1×4) + 滚动条/安全余量
+    const chrome = 160;
+    const estimated = Math.ceil(longestPx + chrome);
+
+    const viewportMax = window.innerWidth - 32;
+    return Math.max(620, Math.min(estimated, viewportMax));
+  }, [examples, fontSize]);
+
   const formEntries = useMemo(
     () =>
       Object.entries(info?.forms ?? {}).filter(
@@ -298,8 +479,9 @@ const WordModal: React.FC<{
       open={open}
       onCancel={onClose}
       footer={null}
-      width={620}
+      width={modalWidth}
       destroyOnHidden
+      maskClosable={false}
       className={styles.modal}
       title={null}
       closeIcon={null}
@@ -312,14 +494,32 @@ const WordModal: React.FC<{
           </Button>
         </div>
         <div className={styles.toolbar}>
-          <Segmented
-            value={mode}
-            onChange={(v) => updateMode(v as 'study' | 'practice')}
-            options={[
-              { label: '学习', value: 'study' },
-              { label: '练习', value: 'practice' },
-            ]}
-          />
+          <span style={{ display: 'inline-flex', alignItems: 'center' }}>
+            <Segmented
+              value={mode}
+              onChange={(v) => updateMode(v as 'study' | 'practice')}
+              options={[
+                { label: '学习', value: 'study' },
+                { label: '练习', value: 'practice' },
+              ]}
+            />
+            <span className={styles.modeHint}>
+              <span className={styles.kbdBadge}>Tab</span>
+              <span>切换</span>
+            </span>
+          </span>
+          <Tooltip title="正文字号">
+            <Segmented
+              size="small"
+              value={fontSize}
+              onChange={(v) => updateFontSize(v as FontSize)}
+              options={[
+                { label: <span style={{ fontSize: 11 }}>A</span>, value: 'small' },
+                { label: <span style={{ fontSize: 13 }}>A</span>, value: 'medium' },
+                { label: <span style={{ fontSize: 15 }}>A</span>, value: 'large' },
+              ]}
+            />
+          </Tooltip>
           {profile ? (
             <Tag color="default">
               Lv.{profile.level.level} · {profile.stats.combo > 0 ? `🔥${profile.stats.combo}` : '准备答题'}
@@ -332,8 +532,9 @@ const WordModal: React.FC<{
 
       <div className={styles.body}>
         {loading && (
-          <div style={{ padding: 60, textAlign: 'center' }}>
-            <Spin tip="正在加载词义..." />
+          <div className={styles.loading}>
+            <Spin />
+            <div className={styles.loadingTip}>正在加载词义...</div>
           </div>
         )}
         {error && <Alert type="error" message={error} showIcon />}
@@ -363,15 +564,12 @@ const WordModal: React.FC<{
                           )}
                           value={ex.input}
                           onChange={(e) => onInput(type, i, e.target.value)}
-                          onKeyDown={(e) => {
-                            if (e.key === 'Enter') submit(type, i);
-                          }}
                           placeholder={
                             ex.status === 'correct'
                               ? '已答对'
                               : ex.status === 'incorrect'
-                              ? '不对，再试一次（回车提交）'
-                              : '请输入对应的英文句子，回车提交'
+                              ? '不对，再试一次'
+                              : '输入英文句子，停顿即校验'
                           }
                           disabled={ex.submitted && ex.status === 'correct'}
                         />

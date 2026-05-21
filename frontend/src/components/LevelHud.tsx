@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { createStyles } from 'antd-style';
 import { useAuthStore } from '@/store/auth';
+import { useThemeStore } from '@/store/theme';
 
-const useStyles = createStyles(({ css }) => ({
+const useStyles = createStyles(({ css, token }, { isDark }: { isDark: boolean }) => ({
   wrap: css({
     position: 'fixed',
     top: 0,
@@ -26,7 +27,7 @@ const useStyles = createStyles(({ css }) => ({
   }),
   arc: css({
     fill: 'none',
-    stroke: '#18181b',
+    stroke: token.colorText,
     strokeWidth: 1.6,
     strokeLinecap: 'round',
     strokeLinejoin: 'round',
@@ -42,7 +43,7 @@ const useStyles = createStyles(({ css }) => ({
   }),
   arrowHead: css({
     fill: 'none',
-    stroke: '#18181b',
+    stroke: token.colorText,
     strokeWidth: 1.6,
     strokeLinecap: 'round',
     strokeLinejoin: 'round',
@@ -63,7 +64,7 @@ const useStyles = createStyles(({ css }) => ({
     width: 6,
     height: 6,
     borderRadius: '50%',
-    background: '#a3a3a3',
+    background: token.colorTextTertiary,
     opacity: 0.55,
     pointerEvents: 'none',
     transition: 'opacity 0.2s ease, transform 0.2s ease',
@@ -77,12 +78,14 @@ const useStyles = createStyles(({ css }) => ({
     top: 14,
     right: 14,
     width: 268,
-    background: 'rgba(255, 255, 255, 0.92)',
+    background: isDark ? 'rgba(24, 24, 27, 0.88)' : 'rgba(255, 255, 255, 0.92)',
     backdropFilter: 'blur(10px)',
-    border: '1px solid #e5e5e5',
+    border: `1px solid ${token.colorBorder}`,
     borderRadius: 14,
     padding: '12px 16px',
-    boxShadow: '0 8px 24px -8px rgba(0,0,0,0.15)',
+    boxShadow: isDark
+      ? '0 8px 24px -8px rgba(0,0,0,0.6)'
+      : '0 8px 24px -8px rgba(0,0,0,0.15)',
     opacity: 0,
     transform: 'translate(8px, -8px) scale(0.96)',
     transformOrigin: 'top right',
@@ -104,41 +107,45 @@ const useStyles = createStyles(({ css }) => ({
   level: css({
     fontSize: 16,
     fontWeight: 700,
-    color: '#18181b',
+    color: token.colorText,
     letterSpacing: 0.2,
   }),
   combo: css({
     fontSize: 12,
-    color: '#ea580c',
+    color: '#ea580c', // 火焰橙在深浅色下都合适，保留为强调色
     fontWeight: 700,
+  }),
+  ready: css({
+    fontSize: 12,
+    color: token.colorTextQuaternary,
   }),
   bar: css({
     marginTop: 8,
     height: 4,
     width: '100%',
-    background: '#f4f4f5',
+    background: token.colorBorderSecondary,
     borderRadius: 999,
     overflow: 'hidden',
   }),
   fill: css({
     height: '100%',
-    background: '#18181b',
+    background: token.colorText,
     borderRadius: 999,
     transition: 'width 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
   }),
   expText: css({
     marginTop: 6,
     fontSize: 11,
-    color: '#737373',
+    color: token.colorTextTertiary,
   }),
   meta: css({
     marginTop: 10,
     paddingTop: 10,
-    borderTop: '1px dashed #f0f0f0',
+    borderTop: `1px dashed ${token.colorBorderSecondary}`,
     display: 'flex',
     justifyContent: 'space-between',
     fontSize: 11,
-    color: '#737373',
+    color: token.colorTextTertiary,
   }),
   metaItem: css({
     display: 'flex',
@@ -147,14 +154,15 @@ const useStyles = createStyles(({ css }) => ({
     alignItems: 'center',
   }),
   metaVal: css({
-    color: '#18181b',
+    color: token.colorText,
     fontWeight: 600,
     fontSize: 13,
   }),
 }));
 
 const LevelHud: React.FC = () => {
-  const { styles, cx } = useStyles();
+  const isDark = useThemeStore((s) => s.mode === 'dark');
+  const { styles, cx } = useStyles({ isDark });
   const profile = useAuthStore((s) => s.profile);
   const [open, setOpen] = useState(false);
 
@@ -190,7 +198,7 @@ const LevelHud: React.FC = () => {
           {stats.combo > 0 ? (
             <span className={styles.combo}>🔥 x{stats.combo}</span>
           ) : (
-            <span style={{ fontSize: 12, color: '#a3a3a3' }}>准备答题</span>
+            <span className={styles.ready}>准备答题</span>
           )}
         </div>
         <div className={styles.bar}>

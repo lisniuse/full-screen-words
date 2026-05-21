@@ -1,3 +1,18 @@
+:root {
+  --fsw-bg: #fafafa;
+  --fsw-text: #262626;
+  --fsw-scrollbar-thumb: #e5e5e5;
+  --fsw-scrollbar-thumb-hover: #a3a3a3;
+}
+
+body.theme-dark {
+  --fsw-bg: #0a0a0a;
+  --fsw-text: #fafafa;
+  --fsw-scrollbar-thumb: #27272a;
+  --fsw-scrollbar-thumb-hover: #52525b;
+  color-scheme: dark;
+}
+
 html,
 body,
 #root {
@@ -5,12 +20,13 @@ body,
   padding: 0;
   height: 100%;
   width: 100%;
-  background-color: #fafafa;
-  color: #262626;
+  background-color: var(--fsw-bg);
+  color: var(--fsw-text);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue',
     Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 * {
@@ -29,9 +45,9 @@ button {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: #e5e5e5;
+  background: var(--fsw-scrollbar-thumb);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #a3a3a3;
+  background: var(--fsw-scrollbar-thumb-hover);
 }

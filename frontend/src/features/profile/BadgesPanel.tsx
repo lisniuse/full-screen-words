@@ -7,7 +7,7 @@ import { api } from '@/api';
 import type { BadgeListItem } from '@/api/types';
 import BadgeIcon from '@/components/BadgeIcon';
 
-const useStyles = createStyles(({ css }) => ({
+const useStyles = createStyles(({ css, token }) => ({
   wrap: css({
     paddingTop: 16,
   }),
@@ -17,11 +17,11 @@ const useStyles = createStyles(({ css }) => ({
     gap: 12,
   }),
   card: css({
-    border: '1px solid #f0f0f0',
+    border: `1px solid ${token.colorBorderSecondary}`,
     borderRadius: 12,
     padding: '16px 12px',
     textAlign: 'center',
-    background: '#ffffff',
+    background: token.colorBgContainer,
     transition: 'all 0.2s ease',
     cursor: 'default',
     display: 'flex',
@@ -29,7 +29,7 @@ const useStyles = createStyles(({ css }) => ({
     alignItems: 'center',
   }),
   cardLocked: css({
-    background: '#fafafa',
+    background: token.colorBgLayout,
   }),
   iconWrap: css({
     display: 'flex',
@@ -42,12 +42,12 @@ const useStyles = createStyles(({ css }) => ({
     marginTop: 8,
     fontWeight: 600,
     fontSize: 14,
-    color: '#18181b',
+    color: token.colorText,
   }),
   tier: css({
     marginTop: 4,
     fontSize: 11,
-    color: '#737373',
+    color: token.colorTextTertiary,
   }),
 }));
 

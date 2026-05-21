@@ -11,6 +11,9 @@ const generate = (randomWordsPkg as any).generate;
 
 @Injectable()
 export class WordsService {
+  /** 同一单词的并发请求共享同一 Promise，避免重复打 OpenRouter + 写库竞态 */
+  private readonly inflight = new Map<string, Promise<any>>();
+
   constructor(
     @InjectRepository(Word) private readonly words: Repository<Word>,
     private readonly openrouter: OpenRouterService,
@@ -34,10 +37,22 @@ export class WordsService {
       return this.safeParse(existing.payload);
     }
 
+    // 同 word 并发：共享 in-flight Promise
+    const cached = this.inflight.get(word);
+    if (cached) return cached;
+
+    const promise = this.fetchAndPersist(word).finally(() => {
+      this.inflight.delete(word);
+    });
+    this.inflight.set(word, promise);
+    return promise;
+  }
+
+  private async fetchAndPersist(word: string) {
     const payload = await this.openrouter.fetchWordInfo(word);
 
-    const record = this.words.create({ text: word, payload });
-    await this.words.save(record);
+    // upsert 而非 save：即便另一进程已写入，也只更新而不抛 UNIQUE
+    await this.words.upsert({ text: word, payload }, ['text']);
 
     return this.safeParse(payload);
   }

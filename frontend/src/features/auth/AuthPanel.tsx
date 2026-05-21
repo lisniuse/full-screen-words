@@ -3,14 +3,14 @@ import { Alert, Button, Form, Input, Tabs } from 'antd';
 import { createStyles } from 'antd-style';
 import { useAuthStore } from '@/store/auth';
 
-const useStyles = createStyles(({ css }) => ({
+const useStyles = createStyles(({ css, token }) => ({
   wrap: css({
     paddingTop: 16,
   }),
   hint: css({
     marginTop: 16,
     fontSize: 12,
-    color: '#737373',
+    color: token.colorTextTertiary,
     textAlign: 'center',
   }),
 }));

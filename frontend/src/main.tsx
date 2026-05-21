@@ -5,10 +5,12 @@ import zhCN from 'antd/locale/zh_CN';
 
 import App from './App';
 import useShadcnTheme from './shadcnTheme';
+import { useThemeStore } from './store/theme';
 import './styles/global.less';
 
 const Root: React.FC = () => {
-  const configProps = useShadcnTheme();
+  const mode = useThemeStore((s) => s.mode);
+  const configProps = useShadcnTheme(mode);
   return (
     <ConfigProvider locale={zhCN} {...configProps}>
       <AntApp>

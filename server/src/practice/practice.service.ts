@@ -25,10 +25,16 @@ export class PracticeService {
     private readonly wordsService: WordsService,
   ) {}
 
+  /**
+   * 校验前规范化（前端 normalize 应保持同步）：
+   *  - 大小写不敏感
+   *  - 忽略所有标点 / 符号（\p{P} \p{S}）
+   *  - 空格数量不敏感（多空格折叠为一个）
+   */
   private normalize(text: string) {
     return (text || '')
       .toLowerCase()
-      .replace(/[.,!?;:"']/g, '')
+      .replace(/[\p{P}\p{S}]/gu, '')
       .replace(/\s+/g, ' ')
       .trim();
   }
